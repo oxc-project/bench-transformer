@@ -2,8 +2,7 @@ import fs from "fs";
 import assert from "assert";
 import { bench, describe } from "vitest";
 import { transpileDeclaration } from "typescript";
-// import { isolatedDeclaration } from "oxc-transform";
-import { isolatedDeclaration } from "@oxc-transform/binding";
+import { isolatedDeclaration } from "oxc-transform";
 
 const fileName = "test.ts";
 
