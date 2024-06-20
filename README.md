@@ -4,33 +4,34 @@
 
 ### MacBook Pro Apple M3 Max
 
-Oxc is 18 - 83 times faster than tsc
+Oxc is at least 20 times faster than tsc.
 
 ```
- ✓ src/isolatedDeclarations.bench.js (6) 5017ms
-   ✓ simple.ts (2) 1226ms
+ ✓ src/isolatedDeclarations.bench.js (6) 3839ms
+   ✓ simple.ts (2) 1225ms
+     name                                    hz     min     max    mean     p75     p99    p995    p999     rme  samples
+   · oxc.isolatedDeclaration          24,306.32  0.0382  0.7928  0.0411  0.0425  0.0522  0.0548  0.0659  ±0.34%    12154   fastest
+   · typescript.transpileDeclaration     303.03  1.9342  8.3384  3.3000  3.9623  8.1062  8.3384  8.3384  ±6.13%      152
+   ✓ vue-large.ts (2) 1395ms
+     name                                  hz      min      max     mean      p75      p99     p995     p999     rme  samples
+   · oxc.isolatedDeclaration           671.69   1.4357   2.4655   1.4888   1.5007   1.6869   2.1395   2.4655  ±0.56%      336   fastest
+   · typescript.transpileDeclaration  29.5000  32.3717  40.2400  33.8984  34.4519  40.2400  40.2400  40.2400  ±3.16%       15
+   ✓ vue.ts (2) 1215ms
      name                                   hz     min     max    mean     p75     p99    p995    p999     rme  samples
-   · oxc.isolatedDeclaration          3,979.34  0.2450  1.2759  0.2513  0.2493  0.2990  0.3447  1.1749  ±0.59%     1990   fastest
-   · typescript.transpileDeclaration    209.78  3.2251  8.7748  4.7670  5.2434  8.7264  8.7748  8.7748  ±5.14%      105
-   ✓ vue-large.ts (2) 2554ms
-     name                                 hz     min     max    mean     p75     p99    p995    p999     rme  samples
-   · oxc.isolatedDeclaration          217.19  4.5300  5.9759  4.6042  4.6027  5.0112  5.9759  5.9759  ±0.62%      109   fastest
-   · typescript.transpileDeclaration  9.3542  100.72  123.49  106.90  107.58  123.49  123.49  123.49  ±4.18%       10
-   ✓ vue.ts (2) 1236ms
-     name                                   hz     min      max    mean     p75      p99     p995     p999     rme  samples
-   · oxc.isolatedDeclaration          9,067.53  0.1029   1.0215  0.1103  0.1112   0.1312   0.1365   0.1460  ±0.52%     4534   fastest
-   · typescript.transpileDeclaration    108.79  7.8236  15.8950  9.1922  9.7885  15.8950  15.8950  15.8950  ±3.66%       55
+   · oxc.isolatedDeclaration          9,166.97  0.1019  0.7393  0.1091  0.1114  0.1251  0.1285  0.1356  ±0.30%     4584   fastest
+   · typescript.transpileDeclaration    302.93  2.5253  8.5047  3.3011  3.9761  7.3282  8.5047  8.5047  ±4.30%      152
+
 
  BENCH  Summary
 
   oxc.isolatedDeclaration - src/isolatedDeclarations.bench.js > simple.ts
-    18.97x faster than typescript.transpileDeclaration
+    80.21x faster than typescript.transpileDeclaration
 
   oxc.isolatedDeclaration - src/isolatedDeclarations.bench.js > vue-large.ts
-    23.22x faster than typescript.transpileDeclaration
+    22.77x faster than typescript.transpileDeclaration
 
   oxc.isolatedDeclaration - src/isolatedDeclarations.bench.js > vue.ts
-    83.35x faster than typescript.transpileDeclaration
+    30.26x faster than typescript.transpileDeclaration
 ```
 
 ## Fixtures

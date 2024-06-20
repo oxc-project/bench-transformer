@@ -6,7 +6,7 @@
     "bench": "vitest bench --run"
   },
   "devDependencies": {
-    "oxc-transform": "^0.15.0",
+    "oxc-transform": "^0.15.1",
     "typescript": "5.5.1-rc",
     "vitest": "^1.6.0"
   }
