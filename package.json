@@ -1,12 +1,13 @@
 {
   "name": "bench-transformer",
+  "packageManager": "pnpm@9.4.0",
   "version": "-.0.0",
   "scripts": {
     "bench": "vitest bench --run"
   },
   "devDependencies": {
     "oxc-transform": "^0.15.0",
-    "typescript": "5.5.0-beta",
+    "typescript": "5.5.1-rc",
     "vitest": "^1.6.0"
   }
 }
