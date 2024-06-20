@@ -1,0 +1,12 @@
+{
+  "name": "bench-transformer",
+  "version": "-.0.0",
+  "scripts": {
+    "bench": "vitest bench --run"
+  },
+  "devDependencies": {
+    "oxc-transform": "^0.15.0",
+    "typescript": "5.5.0-beta",
+    "vitest": "^1.6.0"
+  }
+}
