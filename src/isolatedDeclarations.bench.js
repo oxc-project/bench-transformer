@@ -11,7 +11,7 @@ function oxc(sourceText) {
 }
 
 function tsc(sourceText) {
-  return transpileDeclaration(sourceText, { fileName });
+  return transpileDeclaration(sourceText, { fileName, compilerOptions: { strict: true } });
 }
 
 const sources = fs.readdirSync("./fixtures").map((filename) => {
@@ -19,20 +19,18 @@ const sources = fs.readdirSync("./fixtures").map((filename) => {
   return [filename, sourceText];
 });
 
-sources.forEach(([filename, sourceText]) => {
-  describe(filename, () => {
-    const oxcResult = oxc(sourceText);
-    assert(oxcResult.sourceText);
+describe.each(sources)('%s', (_, sourceText) => {
+  const oxcResult = oxc(sourceText);
+  assert(oxcResult.sourceText);
 
-    const tscResult = tsc(sourceText);
-    assert(tscResult.outputText);
+  const tscResult = tsc(sourceText);
+  assert(tscResult.outputText);
 
-    bench("oxc.isolatedDeclaration", () => {
-      oxc(sourceText);
-    });
+  bench("oxc.isolatedDeclaration", () => {
+    oxc(sourceText);
+  });
 
-    bench("typescript.transpileDeclaration", () => {
-      tsc(sourceText);
-    });
+  bench("typescript.transpileDeclaration", () => {
+    tsc(sourceText);
   });
 });
