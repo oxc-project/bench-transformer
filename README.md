@@ -37,31 +37,38 @@
 Oxc is at least 20 times faster than tsc.
 
 ```
- ✓ src/isolatedDeclarations.bench.js (6) 3830ms
-   ✓ simple.ts (2) 1232ms
+ ✓ src/isolatedDeclarations.bench.js (8) 5264ms
+   ✓ simple.ts (2) 1230ms
      name                                    hz     min     max    mean     p75     p99    p995    p999     rme  samples
-   · oxc.isolatedDeclaration          24,225.18  0.0384  0.5413  0.0413  0.0423  0.0528  0.0545  0.0626  ±0.27%    12113   fastest
-   · typescript.transpileDeclaration     255.85  2.2887  8.9143  3.9086  4.3371  8.2512  8.9143  8.9143  ±5.79%      129
-   ✓ vue-large.ts (2) 1382ms
+   · oxc.isolatedDeclaration          29,640.31  0.0305  0.4573  0.0337  0.0340  0.0439  0.0454  0.0551  ±0.25%    14821   fastest
+   · typescript.transpileDeclaration     363.42  1.5387  8.6191  2.7516  2.9990  6.8490  8.6191  8.6191  ±6.06%      182
+   ✓ typescript.ts (2) 1436ms
      name                                  hz      min      max     mean      p75      p99     p995     p999     rme  samples
-   · oxc.isolatedDeclaration           672.38   1.4229   2.8927   1.4873   1.5056   1.6957   2.1087   2.8927  ±0.71%      337   fastest
-   · typescript.transpileDeclaration  32.5920  28.2735  38.3350  30.6824  31.2297  38.3350  38.3350  38.3350  ±3.99%       17
-   ✓ vue.ts (2) 1214ms
+   · oxc.isolatedDeclaration           558.71   1.5491   3.1518   1.7898   1.8538   2.6166   3.0556   3.1518  ±1.42%      280   fastest
+   · typescript.transpileDeclaration  27.0902  33.1530  49.9506  36.9137  38.1961  49.9506  49.9506  49.9506  ±7.06%       14
+   ✓ vue-large.ts (2) 1378ms
+     name                                  hz      min      max     mean      p75      p99     p995     p999     rme  samples
+   · oxc.isolatedDeclaration           693.69   1.2699   2.7921   1.4416   1.4516   2.1403   2.1675   2.7921  ±1.09%      347   fastest
+   · typescript.transpileDeclaration  30.3635  28.5511  38.6734  32.9343  34.6183  38.6734  38.6734  38.6734  ±5.72%       16
+   ✓ vue.ts (2) 1217ms
      name                                   hz     min     max    mean     p75     p99    p995    p999     rme  samples
-   · oxc.isolatedDeclaration          9,363.41  0.1025  1.3848  0.1068  0.1070  0.1292  0.1355  0.1447  ±0.55%     4682   fastest
-   · typescript.transpileDeclaration    323.22  2.4291  6.6380  3.0939  3.6928  6.0445  6.6380  6.6380  ±3.72%      162
+   · oxc.isolatedDeclaration          8,093.61  0.1060  0.9229  0.1236  0.1274  0.1508  0.1713  0.2752  ±0.44%     4047   fastest
+   · typescript.transpileDeclaration    284.95  2.5625  8.3006  3.5094  4.0177  8.0189  8.3006  8.3006  ±4.58%      143
 
 
  BENCH  Summary
 
   oxc.isolatedDeclaration - src/isolatedDeclarations.bench.js > simple.ts
-    94.69x faster than typescript.transpileDeclaration
+    81.56x faster than typescript.transpileDeclaration
+
+  oxc.isolatedDeclaration - src/isolatedDeclarations.bench.js > typescript.ts
+    20.62x faster than typescript.transpileDeclaration
 
   oxc.isolatedDeclaration - src/isolatedDeclarations.bench.js > vue-large.ts
-    20.63x faster than typescript.transpileDeclaration
+    22.85x faster than typescript.transpileDeclaration
 
   oxc.isolatedDeclaration - src/isolatedDeclarations.bench.js > vue.ts
-    28.97x faster than typescript.transpileDeclaration
+    28.40x faster than typescript.transpileDeclaration
 ```
 
 ## Fixtures
