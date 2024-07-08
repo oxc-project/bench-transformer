@@ -6814,7 +6814,6 @@ import { type SSRBuffer, type SSRContext, renderComponentVNode } from './render'
 import type { Readable, Writable } from 'node:stream'
 import { resolveTeleports } from './renderToString'
 
-const { isVNode } = ssrUtils
 
 export interface SimpleReadable {
   push(chunk: string | null): void
@@ -6928,7 +6927,6 @@ export function renderToNodeStream(
 
 export function pipeToNodeWritable(
   input: App | VNode,
-  context: SSRContext | undefined = {},
   writable: Writable,
 ): void {
   renderToSimpleStream(input, context, {
@@ -6984,7 +6982,6 @@ export function renderToWebStream(
 
 export function pipeToWebWritable(
   input: App | VNode,
-  context: SSRContext | undefined = {},
   writable: WritableStream,
 ): void {
   const writer = writable.getWriter()
@@ -7047,13 +7044,11 @@ import { ssrRenderAttrs } from './helpers/ssrRenderAttrs'
 import { ssrCompile } from './helpers/ssrCompile'
 import { ssrRenderTeleport } from './helpers/ssrRenderTeleport'
 
-const {
-  createComponentInstance,
-  setCurrentRenderingInstance,
-  setupComponent,
-  renderComponentRoot,
-  normalizeVNode,
-} = ssrUtils
+const createComponentInstance: any=ssrUtils.createComponentInstance;
+const setCurrentRenderingInstance: any=ssrUtils.setCurrentRenderingInstance;
+const setupComponent: any=ssrUtils.setupComponent;
+const renderComponentRoot: any=ssrUtils.renderComponentRoot;
+const normalizeVNode: any=ssrUtils.normalizeVNode;
 
 export type SSRBuffer = SSRBufferItem[] & { hasAsync?: boolean }
 export type SSRBufferItem = string | SSRBuffer | Promise<SSRBuffer>

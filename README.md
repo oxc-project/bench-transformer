@@ -69,3 +69,4 @@ Oxc is at least 20 times faster than tsc.
 * simple.ts (5kb, 156 loc) - copied from https://github.com/microsoft/TypeScript/blob/main/tests/cases/transpile
 * vue.ts (31kb, 1185 loc) - some files combined from the vue repository
 * vue-large.ts (320kb, 11702 loc) - all vue files combined
+* typescript.ts (462, 11719 lines) - copied from https://github.com/microsoft/TypeScript/blob/main/src/compiler/utilities.ts
