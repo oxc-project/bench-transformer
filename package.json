@@ -6,9 +6,9 @@
     "bench": "vitest bench --run"
   },
   "devDependencies": {
-    "oxc-transform": "^0.17.2",
+    "oxc-transform": "^0.23.0",
     "typescript": "^5.5.3",
     "vitest": "^2.0.0"
   },
-  "packageManager": "pnpm@9.5.0"
+  "packageManager": "pnpm@9.7.0"
 }
