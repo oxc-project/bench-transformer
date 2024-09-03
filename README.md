@@ -1,5 +1,24 @@
 # Bench Transformer
 
+## Transformer
+
+### MacBook Pro M3 Max
+
+Oxc is at least 3 times faster than swc.
+
+```
+ ✓ src/transformer.bench.js (2) 1280ms
+   ✓ typescript.ts (2) 1278ms
+     name                hz      min      max     mean      p75      p99     p995     p999     rme  samples
+   · oxc.transform   206.73   4.6710   5.3937   4.8372   4.8827   5.2200   5.3937   5.3937  ±0.48%      104   fastest
+   · swc.transform  54.7220  17.5129  19.4141  18.2742  18.8245  19.4141  19.4141  19.4141  ±1.22%       28
+
+BENCH  Summary
+
+oxc.transform - src/transformer.bench.js > typescript.ts
+   3.78x faster than swc.transform
+```
+
 ## Isolated Declarations
 
 ### Mac mini M2
@@ -32,7 +51,7 @@
     29.14x faster than typescript.transpileDeclaration
 ```
 
-### MacBook Pro Apple M3 Max
+### MacBook Pro M3 Max
 
 Oxc is at least 20 times faster than tsc.
 
