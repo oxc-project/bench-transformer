@@ -12,8 +12,8 @@ importers:
         specifier: ^1.7.23
         version: 1.7.23
       oxc-transform:
-        specifier: ^0.17.2
-        version: 0.17.2
+        specifier: ^0.26.0
+        version: 0.26.0
       typescript:
         specifier: ^5.5.4
         version: 5.5.4
@@ -183,43 +183,43 @@ packages:
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
 
-  '@oxc-transform/binding-darwin-arm64@0.17.2':
-    resolution: {integrity: sha512-tFFS4BbR3oRN2NzW5w7VjfF7PpL9mOrSxNXIu+ow8UvJumuxZGIBxfDu5N4PxLa9G4R20rMXyYTC/csZgjVgpg==}
+  '@oxc-transform/binding-darwin-arm64@0.26.0':
+    resolution: {integrity: sha512-EVRVwoxFh1isIGI4kykVPn05+d7B6KCsvnHMk0kGBDYkS5mNF0pBuL4K9fjMoxQ5Mwr2jzpQpMCX4EHhxv0Y6A==}
     cpu: [arm64]
     os: [darwin]
 
-  '@oxc-transform/binding-darwin-x64@0.17.2':
-    resolution: {integrity: sha512-gscFe1NTDrg1SXjyJfSi9sSpKJP557MuM72azcs1J59Qa0I/LzdfNJw0B7WQrk5Q/kUKAERxDfH8z2LCLuGSpg==}
+  '@oxc-transform/binding-darwin-x64@0.26.0':
+    resolution: {integrity: sha512-g73jDLQKPqUIkHBgagm3GjhpZK2ZEJOJPEEfwHCRvGXqJg72axcOspdWNS/ttWSjQ8ZU2Tn/vO637AkWMlnkLQ==}
     cpu: [x64]
     os: [darwin]
 
-  '@oxc-transform/binding-linux-arm64-gnu@0.17.2':
-    resolution: {integrity: sha512-Yc/pCFctwiou/vA2M1C40BMXJnRrfNCEZHfte/9uwkHXs0Lhwjb7ODaRhK8DT1pn9aXWqinbUN5W/qda7rIHgA==}
+  '@oxc-transform/binding-linux-arm64-gnu@0.26.0':
+    resolution: {integrity: sha512-mOwzY33GQGfguKZN03+sEi+ROaxkMtE5NRzxp6I1nHcbshQXFMsI/5zryr+QEdgKibmB4I08zTzqYMXdmIoTqA==}
     cpu: [arm64]
     os: [linux]
 
-  '@oxc-transform/binding-linux-arm64-musl@0.17.2':
-    resolution: {integrity: sha512-Q5j1jaxAaLZD9bKQJSwkRjTarvykCpc24htlFfeq6BMxfJtJEm0wXWOMOSVY+hZR8GSOX/o8lLpo/kiDzKvcoQ==}
+  '@oxc-transform/binding-linux-arm64-musl@0.26.0':
+    resolution: {integrity: sha512-6cipW+uE1vvgqAgQm+CAVZ0zBsKeMfLIWW1D1iIlbdUJXwN8boWA6A/+6NR2VnFVeXcF6loUM/OXt5Se2HtcJg==}
     cpu: [arm64]
     os: [linux]
 
-  '@oxc-transform/binding-linux-x64-gnu@0.17.2':
-    resolution: {integrity: sha512-kn2b+R6k28YOARG4HXnkGK8+ndLpAu4Yj57GDqmlx9C0Hs105Xp6W6LdHxXyzXUUHz2m0zO+wceh/iNK5FY5Vw==}
+  '@oxc-transform/binding-linux-x64-gnu@0.26.0':
+    resolution: {integrity: sha512-76TAJ36G3PpoX/2foSiV6NpCpM1Da3aNna74VJL1xPQxUWAOIFnARli5sCura5kq/lGyaP6CMQYxwjl1Y5SwCA==}
     cpu: [x64]
     os: [linux]
 
-  '@oxc-transform/binding-linux-x64-musl@0.17.2':
-    resolution: {integrity: sha512-Sf1yRE35Jfi8sGzviglyRyXpFpcaeOocfFVgahgmaTZ0huf4LAzbJpFwJ6mbOPeAShK35Regrwx0GblKfEOFeg==}
+  '@oxc-transform/binding-linux-x64-musl@0.26.0':
+    resolution: {integrity: sha512-QmpDjsDu0xCJGd84c5G9tlY3B5ntoAenjlc73Hvdeahs8cn168vpe71PTtvdkpggyUnM2Dw1cx29VhLaFxv1VQ==}
     cpu: [x64]
     os: [linux]
 
-  '@oxc-transform/binding-win32-arm64-msvc@0.17.2':
-    resolution: {integrity: sha512-XRYvIHkOfM1JTPHVtwPNAeUcJyOlX4/RexaP7+LImjJYFaDTITKhAsmjfbTbIDmTYB6kpa09/QRf1DvJq4Ny6A==}
+  '@oxc-transform/binding-win32-arm64-msvc@0.26.0':
+    resolution: {integrity: sha512-LgXASjJ2lTL0u4cMX+Z/V41wToTmf/UTdQsvEgptR6WccI4pIZ8o9h7BQq40TH2Y4SCZSlOCvIlihlLk1wZowA==}
     cpu: [arm64]
     os: [win32]
 
-  '@oxc-transform/binding-win32-x64-msvc@0.17.2':
-    resolution: {integrity: sha512-jQDAFLQXrudY5YvP/aVoLqDF9CF0n129h4d5x8ekjcnIAoAE1fIKl2JTfIsALOoH4huDF6DcuNZKV/685lf8Ag==}
+  '@oxc-transform/binding-win32-x64-msvc@0.26.0':
+    resolution: {integrity: sha512-VCrQQtjkivC0/hG50ktdgzRSxZwUeAmsJoc/wj736PQQip+ioo/bmZefuo6Ut6pAeOJWIN/0R5wPxGaedRgrCQ==}
     cpu: [x64]
     os: [win32]
 
@@ -496,8 +496,8 @@ packages:
     resolution: {integrity: sha512-1FlR+gjXK7X+AsAHso35MnyN5KqGwJRi/31ft6x0M194ht7S+rWAvd7PHss9xSKMzE0asv1pyIHaJYq+BbacAQ==}
     engines: {node: '>=12'}
 
-  oxc-transform@0.17.2:
-    resolution: {integrity: sha512-mnoyoMas0r3pyJE0RxeRmj7QfzL5ZRRPNQdN/FEVvmuPe14Z30d6DkG+1sy9iAB2J0lYy81DZquhO07De97N8w==}
+  oxc-transform@0.26.0:
+    resolution: {integrity: sha512-PcYlmWhwjFR5lDRy2qtLd+/1SszHiH3OW9sSXvuntlqOloWqH03eNeyEJqOQnRnb/StFQW3BA0diJfzEbm80Lg==}
 
   path-key@3.1.1:
     resolution: {integrity: sha512-ojmeN0qd+y0jszEtoY48r0Peq5dwMEkIlCOu6Q5f41lfkswXuKtYrhgoTpLnyIcHm24Uhqx+5Tqm2InSwLhE6Q==}
@@ -739,28 +739,28 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
-  '@oxc-transform/binding-darwin-arm64@0.17.2':
+  '@oxc-transform/binding-darwin-arm64@0.26.0':
     optional: true
 
-  '@oxc-transform/binding-darwin-x64@0.17.2':
+  '@oxc-transform/binding-darwin-x64@0.26.0':
     optional: true
 
-  '@oxc-transform/binding-linux-arm64-gnu@0.17.2':
+  '@oxc-transform/binding-linux-arm64-gnu@0.26.0':
     optional: true
 
-  '@oxc-transform/binding-linux-arm64-musl@0.17.2':
+  '@oxc-transform/binding-linux-arm64-musl@0.26.0':
     optional: true
 
-  '@oxc-transform/binding-linux-x64-gnu@0.17.2':
+  '@oxc-transform/binding-linux-x64-gnu@0.26.0':
     optional: true
 
-  '@oxc-transform/binding-linux-x64-musl@0.17.2':
+  '@oxc-transform/binding-linux-x64-musl@0.26.0':
     optional: true
 
-  '@oxc-transform/binding-win32-arm64-msvc@0.17.2':
+  '@oxc-transform/binding-win32-arm64-msvc@0.26.0':
     optional: true
 
-  '@oxc-transform/binding-win32-x64-msvc@0.17.2':
+  '@oxc-transform/binding-win32-x64-msvc@0.26.0':
     optional: true
 
   '@rollup/rollup-android-arm-eabi@4.21.2':
@@ -1003,16 +1003,16 @@ snapshots:
     dependencies:
       mimic-fn: 4.0.0
 
-  oxc-transform@0.17.2:
+  oxc-transform@0.26.0:
     optionalDependencies:
-      '@oxc-transform/binding-darwin-arm64': 0.17.2
-      '@oxc-transform/binding-darwin-x64': 0.17.2
-      '@oxc-transform/binding-linux-arm64-gnu': 0.17.2
-      '@oxc-transform/binding-linux-arm64-musl': 0.17.2
-      '@oxc-transform/binding-linux-x64-gnu': 0.17.2
-      '@oxc-transform/binding-linux-x64-musl': 0.17.2
-      '@oxc-transform/binding-win32-arm64-msvc': 0.17.2
-      '@oxc-transform/binding-win32-x64-msvc': 0.17.2
+      '@oxc-transform/binding-darwin-arm64': 0.26.0
+      '@oxc-transform/binding-darwin-x64': 0.26.0
+      '@oxc-transform/binding-linux-arm64-gnu': 0.26.0
+      '@oxc-transform/binding-linux-arm64-musl': 0.26.0
+      '@oxc-transform/binding-linux-x64-gnu': 0.26.0
+      '@oxc-transform/binding-linux-x64-musl': 0.26.0
+      '@oxc-transform/binding-win32-arm64-msvc': 0.26.0
+      '@oxc-transform/binding-win32-x64-msvc': 0.26.0
 
   path-key@3.1.1: {}
 
