@@ -28,7 +28,7 @@ const sources = fs.readdirSync("./fixtures")
 describe.each(sources)('%s', (filename, sourceText) => {
   console.log(filename)
   const oxcResult = oxc(filename, sourceText);
-  assert(oxcResult.sourceText);
+  assert(oxcResult.code);
 
   const swcResult = swc(filename, sourceText);
   assert(swcResult.code);

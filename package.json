@@ -7,9 +7,9 @@
   },
   "devDependencies": {
     "@swc/core": "^1.7.23",
-    "oxc-transform": "^0.17.2",
+    "oxc-transform": "^0.26.0",
     "typescript": "^5.5.4",
     "vitest": "^2.0.5"
   },
-  "packageManager": "pnpm@9.5.0"
+  "packageManager": "pnpm@9.9.0"
 }
