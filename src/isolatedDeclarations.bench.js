@@ -7,7 +7,9 @@ import { isolatedDeclaration } from "oxc-transform";
 const fileName = "test.ts";
 
 function oxc(sourceText) {
-  return isolatedDeclaration(fileName, sourceText);
+  return isolatedDeclaration(fileName, sourceText, {
+    sourcemap: false
+  });
 }
 
 function tsc(sourceText) {
@@ -21,7 +23,7 @@ const sources = fs.readdirSync("./fixtures").map((filename) => {
 
 describe.each(sources)('%s', (_, sourceText) => {
   const oxcResult = oxc(sourceText);
-  assert(oxcResult.sourceText);
+  assert(oxcResult.code);
 
   const tscResult = tsc(sourceText);
   assert(tscResult.outputText);
