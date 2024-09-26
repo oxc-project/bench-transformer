@@ -16,10 +16,12 @@ function swc(filename, sourceText) {
     jsc: {
       target: "esnext",
       transform: {
+        treatConstEnumAsEnum: true,
         react: {
           runtime: 'automatic'
         }
-      }
+      },
+      preserveAllComments: false,
     }
   });
 }
@@ -28,6 +30,7 @@ function babel(filename, sourceText) {
   return babelTransform(sourceText, {
     filename,
     babelrc: false,
+    comments: false,
     presets: [
       "@babel/preset-typescript",
       ["@babel/preset-react", { runtime: 'automatic' }],
