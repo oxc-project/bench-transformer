@@ -43,9 +43,9 @@ Oxc is 4x faster than tsc on small files, and 10x faster on larger files.
 
 ## Fixtures
 
-* parser.ts (525K, 10777 lines) - https://github.com/microsoft/TypeScript/blob/main/src/compiler/parser.ts
-* renderer.ts (70K, 2550 lines) - https://github.com/vuejs/core/blob/main/packages/runtime-core/src/renderer.ts
-* table.ts (30K, 1117 lines) - https://github.com/toeverything/AFFiNE/blob/canary/packages/common/infra/src/orm/core/table.ts
+* [TypeScript/src/compiler/parser.ts](https://github.com/microsoft/TypeScript/blob/3ad0f752482f5e846dc35a69572ccb43311826c0/src/compiler/parser.ts) - an atypical large file with 10777 lines.
+* [vuejs/core/packages/runtime-core/src/renderer.ts](https://github.com/vuejs/core/blob/cb34b28a4a9bf868be4785b001c526163eda342e/packages/runtime-core/src/renderer.ts) - somewhat large library file with 2550 lines.
+* [AFFiNE/packages/frontend/core/src/components/affine/page-properties/table.tsx](https://github.com/toeverything/AFFiNE/blob/a9b29d24f1f6e5563e43a11b5cbcfb30c9981d25/packages/frontend/core/src/components/affine/page-properties/table.tsx) - a tsx file with 1118 lines.
 
 ### NOTE:
 
