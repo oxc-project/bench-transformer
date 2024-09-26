@@ -1,6 +1,10 @@
 # Bench Oxc, Swc, and Babel Transformer
 
-tldr: oxc transform is 4x faster than swc, 40x faster than babel, uses less memory, and is much smaller in package size (2MB vs 37MB).
+## Summary
+
+* Compared to swc, oxc transformer is 4x faster, uses 20% less memory, and is 35 MB smaller in package size (from swc's 37MB).
+* Compared to babel, oxc transformer is 40x faster, uses 70% less memory, and is 19 MB smaller with 168 npm packages less to install.
+<!-- * Compared to tsc's isolated declarations dts emit, oxc is x times faster. -->
 
 ## Transform / Transpile
 
@@ -75,8 +79,8 @@ On `parser.ts` by using `/usr/bin/time -alh node`:
 |       | Max RSS |
 | ---   | ------- |
 | oxc   | 51 MB   |
-| swc   | 67MB    |
-| babel | 172MB   |
+| swc   | 67 MB    |
+| babel | 172 MB   |
 
 ## Package size
 
@@ -84,8 +88,8 @@ For package download size, oxc downloads 2 packages for around a total of 2MB.
 
 | Package                                                                                  | Size                                                                                       |
 | ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| `@oxc-transform/binding-darwin-arm64`                                                    | [1.95MB](https://www.npmjs.com/package/@oxc-transform/binding-darwin-arm64)                |
-| `@swc/core-darwin-arm64`                                                                 | [37.5MB](https://www.npmjs.com/package/@swc/core-darwin-arm64)                             |
+| `@oxc-transform/binding-darwin-arm64`                                                    | [1.95 MB](https://www.npmjs.com/package/@oxc-transform/binding-darwin-arm64)                |
+| `@swc/core-darwin-arm64`                                                                 | [37.5 MB](https://www.npmjs.com/package/@swc/core-darwin-arm64)                             |
 | `@babel/core` + `@babel/preset-env` + `@babel/preset-react` + `@babel/preset-typescript` | [21MB and 170 packages](https://www.npmjs.com/package/@oxc-transform/binding-darwin-arm64) |
 
 ## Fixtures
@@ -96,11 +100,11 @@ For package download size, oxc downloads 2 packages for around a total of 2MB.
 
 ### NOTE:
 
-Babel's code generator deoptimised the styling for large files and reports.
+Babel's code generator deoptimised the styling for large files and reports:
 
 > [BABEL] Note: The code generator has deoptimised the styling of parser.ts as it exceeds the max of 500KB.
 
-I wanted to benchmark the `checker.ts`, but Babel failed to parse:
+I intended to benchmark `checker.ts` from tsc, but Babel failed to parse:
 
 ```
 TypeError: Duplicate declaration "SymbolLinks"
