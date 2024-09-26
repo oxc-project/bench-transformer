@@ -27,4 +27,5 @@ jobs:
           cache: pnpm
 
       - run: pnpm install
-      - run: pnpm run bench
+      - run: pnpm run bench id
+      - run: pnpm run bench transform
