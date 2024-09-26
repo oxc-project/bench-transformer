@@ -1,5 +1,7 @@
 # Bench Oxc, Swc, and Babel Transformer
 
+tldr: oxc transform is 4x faster than swc, 40x faster than babel, uses less memory, and is much smaller in package size (2MB vs 37MB).
+
 ## Transform / Transpile
 
 Oxc is 4x faster than swc, and 40x faster than Babel.
@@ -7,8 +9,6 @@ Oxc is 4x faster than swc, and 40x faster than Babel.
 ### MacBook Pro M3 Max
 
 ```
- BENCH  Summary
-
   oxc - src/transform.bench.js > parser.ts
     3.94x faster than swc
     43.64x faster than babel
@@ -22,6 +22,22 @@ Oxc is 4x faster than swc, and 40x faster than Babel.
     36.14x faster than babel
 ```
 
+### GitHub Actions `ubuntu-latest`
+
+```
+  oxc - src/transform.bench.js > parser.ts
+    4.02x faster than swc
+    47.41x faster than babel
+
+  oxc - src/transform.bench.js > renderer.ts
+    4.09x faster than swc
+    27.14x faster than babel
+
+  oxc - src/transform.bench.js > table.tsx
+    4.63x faster than swc
+    44.04x faster than babel
+```
+
 ## Isolated Declarations DTS Emit
 
 Oxc is 4x faster than tsc on small files, and 10x faster on larger files.
@@ -29,8 +45,6 @@ Oxc is 4x faster than tsc on small files, and 10x faster on larger files.
 ### MacBook Pro M3 Max
 
 ```
- BENCH  Summary
-
   oxc - src/id.bench.js > parser.ts
     14.81x faster than tsc
 
@@ -39,6 +53,19 @@ Oxc is 4x faster than tsc on small files, and 10x faster on larger files.
 
   oxc - src/id.bench.js > table.tsx
     4.43x faster than tsc
+```
+
+### GitHub Actions `ubuntu-latest`
+
+```
+  oxc - src/id.bench.js > parser.ts
+    18.00x faster than tsc
+
+  oxc - src/id.bench.js > renderer.ts
+    22.37x faster than tsc
+
+  oxc - src/id.bench.js > table.tsx
+    8.06x faster than tsc
 ```
 
 ### Memory Usage
@@ -50,6 +77,16 @@ On `parser.ts` by using `/usr/bin/time -alh node`:
 | oxc   | 51 MB   |
 | swc   | 67MB    |
 | babel | 172MB   |
+
+## Package size
+
+For package download size, oxc downloads 2 packages for around a total of 2MB.
+
+| Package                                                                                  | Size                                                                                       |
+| ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| `@oxc-transform/binding-darwin-arm64`                                                    | [1.95MB](https://www.npmjs.com/package/@oxc-transform/binding-darwin-arm64)                |
+| `@swc/core-darwin-arm64`                                                                 | [37.5MB](https://www.npmjs.com/package/@swc/core-darwin-arm64)                             |
+| `@babel/core` + `@babel/preset-env` + `@babel/preset-react` + `@babel/preset-typescript` | [21MB and 170 packages](https://www.npmjs.com/package/@oxc-transform/binding-darwin-arm64) |
 
 ## Fixtures
 
