@@ -41,6 +41,16 @@ Oxc is 4x faster than tsc on small files, and 10x faster on larger files.
     4.43x faster than tsc
 ```
 
+### Memory Usage
+
+On `parser.ts` by using `/usr/bin/time -alh node`:
+
+|       | Max RSS |
+| ---   | ------- |
+| oxc   | 51 MB   |
+| swc   | 67MB    |
+| babel | 172MB   |
+
 ## Fixtures
 
 * [TypeScript/src/compiler/parser.ts](https://github.com/microsoft/TypeScript/blob/3ad0f752482f5e846dc35a69572ccb43311826c0/src/compiler/parser.ts) - an atypical large file with 10777 lines.
