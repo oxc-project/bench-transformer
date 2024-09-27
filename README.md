@@ -10,22 +10,6 @@
 
 Oxc is 4x faster than swc, and 40x faster than Babel.
 
-### MacBook Pro M3 Max
-
-```
-  oxc - src/transform.bench.js > parser.ts
-    3.94x faster than swc
-    43.64x faster than babel
-
-  oxc - src/transform.bench.js > renderer.ts
-    3.98x faster than swc
-    41.86x faster than babel
-
-  oxc - src/transform.bench.js > table.tsx
-    4.28x faster than swc
-    36.14x faster than babel
-```
-
 ### GitHub Actions `ubuntu-latest`
 
 ```
@@ -42,22 +26,25 @@ Oxc is 4x faster than swc, and 40x faster than Babel.
     44.04x faster than babel
 ```
 
-## Isolated Declarations DTS Emit
-
-Oxc is 4x faster than tsc on small files, and 10x faster on larger files.
-
 ### MacBook Pro M3 Max
 
 ```
-  oxc - src/id.bench.js > parser.ts
-    14.81x faster than tsc
+  oxc - src/transform.bench.js > parser.ts
+    3.94x faster than swc
+    43.64x faster than babel
 
-  oxc - src/id.bench.js > renderer.ts
-    15.19x faster than tsc
+  oxc - src/transform.bench.js > renderer.ts
+    3.98x faster than swc
+    41.86x faster than babel
 
-  oxc - src/id.bench.js > table.tsx
-    4.43x faster than tsc
+  oxc - src/transform.bench.js > table.tsx
+    4.28x faster than swc
+    36.14x faster than babel
 ```
+
+## Isolated Declarations DTS Emit
+
+Oxc is at least 5x faster than `tsc` on small files, and 20x faster on larger files.
 
 ### GitHub Actions `ubuntu-latest`
 
@@ -70,6 +57,20 @@ Oxc is 4x faster than tsc on small files, and 10x faster on larger files.
 
   oxc - src/id.bench.js > table.tsx
     8.06x faster than tsc
+```
+
+
+### MacBook Pro M3 Max
+
+```
+  oxc - src/id.bench.js > parser.ts
+    20.15x faster than tsc
+
+  oxc - src/id.bench.js > renderer.ts
+    19.85x faster than tsc
+
+  oxc - src/id.bench.js > table.tsx
+    5.09x faster than tsc
 ```
 
 ### Memory Usage
