@@ -9,7 +9,7 @@ function oxc(filename, sourceText) {
 }
 
 function tsc(fileName, sourceText) {
-  return transpileDeclaration(sourceText, { fileName }).outputText;
+  return transpileDeclaration(sourceText, { fileName, compilerOptions: { noResolve:true, noLib: true } }).outputText;
 }
 
 const sources = fs.readdirSync("./fixtures")
