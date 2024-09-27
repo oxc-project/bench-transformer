@@ -29,17 +29,21 @@ Oxc is 4x faster than swc, and 40x faster than Babel.
 ### MacBook Pro M3 Max
 
 ```
+  oxc - src/transform.bench.js > UserSettings.tsx
+    6.43x faster than swc
+    67.96x faster than babel
+
   oxc - src/transform.bench.js > parser.ts
-    3.94x faster than swc
-    43.64x faster than babel
+    3.55x faster than swc
+    44.01x faster than babel
 
   oxc - src/transform.bench.js > renderer.ts
-    3.98x faster than swc
-    41.86x faster than babel
+    3.62x faster than swc
+    24.58x faster than babel
 
   oxc - src/transform.bench.js > table.tsx
-    4.28x faster than swc
-    36.14x faster than babel
+    4.22x faster than swc
+    34.35x faster than babel
 ```
 
 ## Isolated Declarations DTS Emit
@@ -98,6 +102,7 @@ For package download size, oxc downloads 2 packages for around a total of 2MB.
 * [TypeScript/src/compiler/parser.ts](https://github.com/microsoft/TypeScript/blob/3ad0f752482f5e846dc35a69572ccb43311826c0/src/compiler/parser.ts) - an atypical large file with 10777 lines.
 * [vuejs/core/packages/runtime-core/src/renderer.ts](https://github.com/vuejs/core/blob/cb34b28a4a9bf868be4785b001c526163eda342e/packages/runtime-core/src/renderer.ts) - somewhat large library file with 2550 lines.
 * [AFFiNE/packages/frontend/core/src/components/affine/page-properties/table.tsx](https://github.com/toeverything/AFFiNE/blob/a9b29d24f1f6e5563e43a11b5cbcfb30c9981d25/packages/frontend/core/src/components/affine/page-properties/table.tsx) - a tsx file with 1118 lines.
+* [cal.com/apps/web/components/getting-started/steps-views/UserSettings.tsx](https://github.com/calcom/cal.com/blob/20729b3a4e62c52f49419d2c3b30225f0c7a5936/apps/web/components/getting-started/steps-views/UserSettings.tsx) - a typical 124 lines of tsx code.
 
 ### NOTE:
 
