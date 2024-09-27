@@ -26,6 +26,9 @@ importers:
       oxc-transform:
         specifier: ^0.30.2
         version: 0.30.2
+      react-refresh:
+        specifier: ^0.14.2
+        version: 0.14.2
       typescript:
         specifier: ^5.6.2
         version: 5.6.2
@@ -1237,6 +1240,10 @@ packages:
   postcss@8.4.47:
     resolution: {integrity: sha512-56rxCq7G/XfB4EkXq9Egn5GCqugWvDFjafDOThIdMBsI15iqPqR5r15TfSr1YPYeEI19YeaXMCbY6u88Y76GLQ==}
     engines: {node: ^10 || ^12 || >=14}
+
+  react-refresh@0.14.2:
+    resolution: {integrity: sha512-jCvmsr+1IUSMUyzOkRcvnVbX3ZYC6g9TDrDbFuFmRDq7PD4yaGbLKNQL6k2jnArV8hjYxh7hVhAZB6s9HDGpZA==}
+    engines: {node: '>=0.10.0'}
 
   regenerate-unicode-properties@10.2.0:
     resolution: {integrity: sha512-DqHn3DwbmmPVzeKj9woBadqmXxLvQoQIwu7nopMc72ztvxVmVk2SBhSnx67zuye5TP+lJsb/TBQsjLKhnDf3MA==}
@@ -2478,6 +2485,7 @@ snapshots:
       '@vitest/spy': 2.1.1
       estree-walker: 3.0.3
       magic-string: 0.30.11
+    optionalDependencies:
       vite: 5.4.8
 
   '@vitest/pretty-format@2.1.1':
@@ -2691,6 +2699,8 @@ snapshots:
       nanoid: 3.3.7
       picocolors: 1.1.0
       source-map-js: 1.2.1
+
+  react-refresh@0.14.2: {}
 
   regenerate-unicode-properties@10.2.0:
     dependencies:

@@ -6,7 +6,13 @@ import { transformSync as babelTransform } from '@babel/core'
 import { transform as oxcTransform } from "oxc-transform";
 
 function oxc(filename, sourceText) {
-  return oxcTransform(filename, sourceText);
+  return oxcTransform(filename, sourceText, {
+    react: {
+      runtime: 'automatic',
+      development: true,
+      refresh: {}
+    }
+  });
 }
 
 function swc(filename, sourceText) {
@@ -18,7 +24,9 @@ function swc(filename, sourceText) {
       transform: {
         treatConstEnumAsEnum: true,
         react: {
-          runtime: 'automatic'
+          runtime: 'automatic',
+          development: true,
+          refresh: true,
         }
       },
       preserveAllComments: false,
@@ -31,9 +39,13 @@ function babel(filename, sourceText) {
     filename,
     babelrc: false,
     comments: false,
+    envName: 'development',
+    plugins: [
+      "react-refresh/babel"
+    ],
     presets: [
       "@babel/preset-typescript",
-      ["@babel/preset-react", { runtime: 'automatic' }],
+      ["@babel/preset-react", { runtime: 'automatic', development: true }],
     ]
   });
 }
@@ -47,7 +59,7 @@ const sources = fs.readdirSync("./fixtures")
 describe.each(sources)('%s', (filename, sourceText) => {
   for (const fn of [oxc, swc, babel]) {
     const code = fn(filename, sourceText).code;
-    // fs.writeFileSync(`./output/${filename}.${fn.name}.js`, code);
+    fs.writeFileSync(`./output/${filename}.${fn.name}.js`, code);
     assert(code);
     bench(fn.name, () => fn(filename, sourceText));
   }
