@@ -1,28 +1,30 @@
-import fs from "fs";
-import assert from "assert";
+import fs from "node:fs";
+import assert from "node:assert";
 import { bench, describe } from "vitest";
 import { transpileDeclaration } from "typescript";
 import { isolatedDeclaration } from "oxc-transform";
 
-function oxc(filename, sourceText) {
+function oxc(filename: string, sourceText: string) {
   return isolatedDeclaration(filename, sourceText).code;
 }
 
-function tsc(fileName, sourceText) {
-  return transpileDeclaration(sourceText, { fileName, compilerOptions: { noResolve:true, noLib: true } }).outputText;
+function tsc(fileName: string, sourceText: string) {
+  return transpileDeclaration(sourceText, {
+    fileName,
+    compilerOptions: { noResolve: true, noLib: true },
+  }).outputText;
 }
 
-const sources = fs.readdirSync("./fixtures")
-  .map((filename) => {
-    const sourceText = fs.readFileSync(`./fixtures/${filename}`, "utf8");
-    return [filename, sourceText];
-  });
+const sources = fs.readdirSync("./fixtures").map((filename) => {
+  const sourceText = fs.readFileSync(`./fixtures/${filename}`, "utf8");
+  return [filename, sourceText];
+});
 
-describe.each(sources)('%s', (filename, sourceText) => {
+describe.each(sources)("%s", (filename, sourceText) => {
   for (const fn of [oxc, tsc]) {
     const code = fn(filename, sourceText);
     // fs.writeFileSync(`./output/${filename}.${fn.name}.js`, code);
     assert(code);
-    bench(fn.name, () => fn(filename, sourceText));
+    bench(fn.name, () => void fn(filename, sourceText));
   }
 });

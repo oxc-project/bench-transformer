@@ -1,67 +1,95 @@
-import fs from "fs";
-import assert from "assert";
+import fs from "node:fs";
+import assert from "node:assert";
 import { bench, describe } from "vitest";
 import { transformSync as swcTransform } from "@swc/core";
-import { transformSync as babelTransform } from '@babel/core'
+import { transformSync as babelTransform } from "@babel/core";
 import { transform as oxcTransform } from "oxc-transform";
 
-const development = false;
-const refresh = false;
+type RunOptions = {
+  filename: string;
+  sourceText: string;
+  sourceMap: boolean;
+  reactDev: boolean;
+};
 
-function oxc(filename, sourceText) {
-  return oxcTransform(filename, sourceText, {
+function oxc(options: RunOptions) {
+  return oxcTransform(options.filename, options.sourceText, {
+    sourcemap: options.sourceMap,
     react: {
-      runtime: 'automatic',
-      development,
-      refresh
-    }
+      runtime: "automatic",
+      development: options.reactDev,
+      refresh: options.reactDev ? {} : undefined,
+    },
   });
 }
 
-function swc(filename, sourceText) {
-  return swcTransform(sourceText, {
-    filename,
+function swc(options: RunOptions) {
+  return swcTransform(options.sourceText, {
+    filename: options.filename,
+    sourceMaps: options.sourceMap,
     swcrc: false,
     jsc: {
       target: "esnext",
       transform: {
         treatConstEnumAsEnum: true,
         react: {
-          runtime: 'automatic',
-          development,
-          refresh,
-        }
+          runtime: "automatic",
+          development: options.reactDev,
+          refresh: options.reactDev,
+        },
       },
       preserveAllComments: false,
-    }
+    },
   });
 }
 
-function babel(filename, sourceText) {
-  return babelTransform(sourceText, {
-    filename,
+function babel(options: RunOptions) {
+  return babelTransform(options.sourceText, {
+    filename: options.filename,
+    sourceMaps: options.sourceMap,
     babelrc: false,
     comments: false,
-    envName: 'development',
-    plugins: refresh ? [ "react-refresh/babel" ] : [],
+    envName: "development",
+    plugins: options.reactDev ? ["react-refresh/babel"] : [],
     presets: [
       "@babel/preset-typescript",
-      ["@babel/preset-react", { runtime: 'automatic', development }],
-    ]
-  });
+      [
+        "@babel/preset-react",
+        { runtime: "automatic", development: options.reactDev },
+      ],
+    ],
+  })!;
 }
 
-const sources = fs.readdirSync("./fixtures")
-.map((filename) => {
+type Case = [
+  filename: string,
+  sourceMap: boolean,
+  reactDev: boolean,
+  sourceText: string,
+];
+const cases = fs.readdirSync("./fixtures").flatMap((filename): Case[] => {
   const sourceText = fs.readFileSync(`./fixtures/${filename}`, "utf8");
-  return [filename, sourceText];
+  const base: Case[] = [
+    [filename, false, false, sourceText],
+    [filename, true, false, sourceText],
+  ];
+  if (!filename.endsWith(".tsx")) return base;
+  return [
+    ...base,
+    [filename, false, true, sourceText],
+    [filename, true, true, sourceText],
+  ];
 });
 
-describe.each(sources)('%s', (filename, sourceText) => {
-  for (const fn of [oxc, swc, babel]) {
-    const code = fn(filename, sourceText).code;
-    // fs.writeFileSync(`./output/${filename}.${fn.name}.js`, code);
-    assert(code);
-    bench(fn.name, () => fn(filename, sourceText));
-  }
-});
+describe.each(cases)(
+  "%s (sourceMap: %s, reactDev: %s)",
+  (filename, sourceMap, reactDev, sourceText) => {
+    for (const fn of [oxc, swc, babel]) {
+      const options: RunOptions = { filename, sourceText, sourceMap, reactDev };
+      const code = fn(options).code;
+      // fs.writeFileSync(`./output/${filename}.${fn.name}.js`, code);
+      assert(code);
+      bench(fn.name, () => void fn(options));
+    }
+  },
+);
