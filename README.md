@@ -2,75 +2,67 @@
 
 ## Summary
 
-* For transform, oxc is 4x faster than swc, uses 20% less memory, and is 35 MB smaller in package size (from swc's 37MB).
-* For transform, oxc is 40x faster than babel, uses 70% less memory, and is 19 MB smaller with 168 npm packages less to install.
-* For react development + refresh, oxc is 6x faster than swc and 70x faster than Babel.
-* For tsc's isolated declarations dts emit, oxc is 45x faster on ordinary files, and 20x faster on larger files.
+- Transform: Oxc is 3x - 5x faster than SWC, uses 20% less memory, and has smaller package size (2 MB vs SWC's 37 MB).
+- Transform: Oxc is 20x - 50x faster than Babel, uses 70% less memory, and is 19 MB smaller, with only 2 npm packages to install vs Babel's 170.
+- React development + React Refresh: Oxc is 5x faster than SWC, 50x faster than Babel.
+- TS isolated declarations `.d.ts` emit: Oxc is 40x faster than TSC on typical files, 20x faster on larger files.
 
 ## Transform / Transpile
 
-Oxc is 4x faster than swc, and 40x faster than Babel.
+Oxc is 3x - 5x faster than swc, and 20x - 50x faster than Babel.
 
-React development + refresh is 6x faster than swc and 70x faster Babel.
+React development + refresh is 6x faster than swc and 20x - 70x faster than Babel.
 
 ### GitHub Actions `ubuntu-latest`
 
 ```
-  oxc - src/transform.bench.js > UserSettings.tsx
-    5.62x faster than swc
-    69.64x faster than babel
+oxc - src/transform.bench.ts > UserSettings.tsx (sourceMap: false, reactDev: false)
+5.38x faster than swc
+57.51x faster than babel
 
-  oxc - src/transform.bench.js > parser.ts
-    3.72x faster than swc
-    54.70x faster than babel
+oxc - src/transform.bench.ts > UserSettings.tsx (sourceMap: true, reactDev: false)
+5.15x faster than swc
+47.33x faster than babel
 
-  oxc - src/transform.bench.js > renderer.ts
-    3.96x faster than swc
-    30.35x faster than babel
+oxc - src/transform.bench.ts > UserSettings.tsx (sourceMap: false, reactDev: true)
+5.08x faster than swc
+54.38x faster than babel
 
-  oxc - src/transform.bench.js > table.tsx
-    4.54x faster than swc
-    59.54x faster than babel
-```
+oxc - src/transform.bench.ts > UserSettings.tsx (sourceMap: true, reactDev: true)
+4.99x faster than swc
+48.33x faster than babel
 
-### MacBook Pro M3 Max
+oxc - src/transform.bench.ts > parser.ts (sourceMap: false, reactDev: false)
+3.57x faster than swc
+39.97x faster than babel
 
-```
-  oxc - src/transform.bench.js > UserSettings.tsx
-    6.90x faster than swc
-    56.93x faster than babel
+oxc - src/transform.bench.ts > parser.ts (sourceMap: true, reactDev: false)
+3.45x faster than swc
+31.61x faster than babel
 
-  oxc - src/transform.bench.js > parser.ts
-    4.01x faster than swc
-    42.31x faster than babel
+oxc - src/transform.bench.ts > renderer.ts (sourceMap: false, reactDev: false)
+3.64x faster than swc
+27.85x faster than babel
 
-  oxc - src/transform.bench.js > renderer.ts
-    3.76x faster than swc
-    27.47x faster than babel
+oxc - src/transform.bench.ts > renderer.ts (sourceMap: true, reactDev: false)
+3.56x faster than swc
+19.13x faster than babel
 
-  oxc - src/transform.bench.js > table.tsx
-    3.94x faster than swc
-    33.74x faster than babel
-```
+oxc - src/transform.bench.ts > table.tsx (sourceMap: false, reactDev: false)
+4.13x faster than swc
+34.22x faster than babel
 
-#### React Development + Refresh
+oxc - src/transform.bench.ts > table.tsx (sourceMap: true, reactDev: false)
+3.90x faster than swc
+26.15x faster than babel
 
-```
-  oxc - src/transform.bench.js > UserSettings.tsx
-    7.16x faster than swc
-    75.47x faster than babel
+oxc - src/transform.bench.ts > table.tsx (sourceMap: false, reactDev: true)
+4.30x faster than swc
+44.17x faster than babel
 
-  oxc - src/transform.bench.js > parser.ts
-    4.03x faster than swc
-    51.63x faster than babel
-
-  oxc - src/transform.bench.js > renderer.ts
-    3.86x faster than swc
-    33.55x faster than babel
-
-  oxc - src/transform.bench.js > table.tsx
-    4.18x faster than swc
-    45.02x faster than babel
+oxc - src/transform.bench.ts > table.tsx (sourceMap: true, reactDev: true)
+3.93x faster than swc
+32.84x faster than babel
 ```
 
 ## Isolated Declarations DTS Emit
@@ -80,35 +72,19 @@ Oxc is 45x faster than `tsc` on ordinary files, and 20x faster on larger files.
 ### GitHub Actions `ubuntu-latest`
 
 ```
-  oxc - src/id.bench.js > UserSettings.tsx
-    45.05x faster than tsc
+oxc - src/id.bench.ts > UserSettings.tsx
+  44.45x faster than tsc
 
-  oxc - src/id.bench.js > parser.ts
-    20.42x faster than tsc
+oxc - src/id.bench.ts > parser.ts
+  21.16x faster than tsc
 
-  oxc - src/id.bench.js > renderer.ts
-    21.70x faster than tsc
+oxc - src/id.bench.ts > renderer.ts
+  21.70x faster than tsc
 
-  oxc - src/id.bench.js > table.tsx
-    7.24x faster than tsc
+oxc - src/id.bench.ts > table.tsx
+  7.99x faster than tsc
 ```
 
-
-### MacBook Pro M3 Max
-
-```
-  oxc - src/id.bench.js > UserSettings.tsx
-    37.16x faster than tsc
-
-  oxc - src/id.bench.js > parser.ts
-    19.08x faster than tsc
-
-  oxc - src/id.bench.js > renderer.ts
-    18.05x faster than tsc
-
-  oxc - src/id.bench.js > table.tsx
-    4.40x faster than tsc
-```
 
 ### Memory Usage
 
@@ -116,9 +92,9 @@ On `parser.ts` by using `/usr/bin/time -alh node`:
 
 |       | Max RSS |
 | ---   | ------- |
-| oxc   | 51 MB   |
-| swc   | 67 MB    |
-| babel | 172 MB   |
+| oxc   | 57 MB   |
+| swc   | 74 MB   |
+| babel | 180 MB  |
 
 ## Package size
 
