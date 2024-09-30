@@ -48,6 +48,8 @@ function babel(options: RunOptions) {
     filename: options.filename,
     sourceMaps: options.sourceMap,
     babelrc: false,
+    configFile: false,
+    browserslistConfigFile: false,
     comments: false,
     envName: "development",
     plugins: options.reactDev ? ["react-refresh/babel"] : [],
