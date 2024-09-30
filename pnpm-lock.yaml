@@ -2532,11 +2532,12 @@ snapshots:
       chai: 5.1.1
       tinyrainbow: 1.2.0
 
-  '@vitest/mocker@2.1.1(@vitest/spy@2.1.1)(vite@5.4.8)':
+  '@vitest/mocker@2.1.1(@vitest/spy@2.1.1)(vite@5.4.8(@types/node@22.7.4))':
     dependencies:
       '@vitest/spy': 2.1.1
       estree-walker: 3.0.3
       magic-string: 0.30.11
+    optionalDependencies:
       vite: 5.4.8(@types/node@22.7.4)
 
   '@vitest/pretty-format@2.1.1':
@@ -2876,18 +2877,17 @@ snapshots:
 
   vite@5.4.8(@types/node@22.7.4):
     dependencies:
-      '@types/node': 22.7.4
       esbuild: 0.21.5
       postcss: 8.4.47
       rollup: 4.22.5
     optionalDependencies:
+      '@types/node': 22.7.4
       fsevents: 2.3.3
 
   vitest@2.1.1(@types/node@22.7.4):
     dependencies:
-      '@types/node': 22.7.4
       '@vitest/expect': 2.1.1
-      '@vitest/mocker': 2.1.1(@vitest/spy@2.1.1)(vite@5.4.8)
+      '@vitest/mocker': 2.1.1(@vitest/spy@2.1.1)(vite@5.4.8(@types/node@22.7.4))
       '@vitest/pretty-format': 2.1.1
       '@vitest/runner': 2.1.1
       '@vitest/snapshot': 2.1.1
@@ -2905,6 +2905,8 @@ snapshots:
       vite: 5.4.8(@types/node@22.7.4)
       vite-node: 2.1.1(@types/node@22.7.4)
       why-is-node-running: 2.3.0
+    optionalDependencies:
+      '@types/node': 22.7.4
     transitivePeerDependencies:
       - less
       - lightningcss
