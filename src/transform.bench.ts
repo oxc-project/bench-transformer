@@ -39,6 +39,9 @@ function swc(options: RunOptions) {
         },
       },
       preserveAllComments: false,
+      experimental:{
+        disableAllLints: true,
+      },
     },
   });
 }
