@@ -10,11 +10,13 @@ type RunOptions = {
   sourceText: string;
   sourceMap: boolean;
   reactDev: boolean;
+  target: 'esnext' | 'es2015'
 };
 
 function oxc(options: RunOptions) {
   return oxcTransform(options.filename, options.sourceText, {
     sourcemap: options.sourceMap,
+    target: options.target,
     react: {
       runtime: "automatic",
       development: options.reactDev,
@@ -29,7 +31,7 @@ function swc(options: RunOptions) {
     sourceMaps: options.sourceMap,
     swcrc: false,
     jsc: {
-      target: "esnext",
+      target: options.target,
       transform: {
         treatConstEnumAsEnum: true,
         react: {
@@ -67,30 +69,32 @@ function babel(options: RunOptions) {
 }
 
 type Case = [
-  filename: string,
-  sourceMap: boolean,
-  reactDev: boolean,
-  sourceText: string,
+  filename: RunOptions['filename'],
+  sourceMap: RunOptions['sourceMap'],
+  reactDev: RunOptions['reactDev'],
+  target: RunOptions['target'],
+  sourceText: RunOptions['sourceText'],
 ];
 const cases = fs.readdirSync("./fixtures").flatMap((filename): Case[] => {
   const sourceText = fs.readFileSync(`./fixtures/${filename}`, "utf8");
   const base: Case[] = [
-    [filename, false, false, sourceText],
-    [filename, true, false, sourceText],
+    [filename, false, false, "esnext", sourceText],
+    [filename, false, false, "es2015", sourceText],
+    [filename, true, false, "esnext", sourceText],
   ];
   if (!filename.endsWith(".tsx")) return base;
   return [
     ...base,
-    [filename, false, true, sourceText],
-    [filename, true, true, sourceText],
+    [filename, false, true, "esnext", sourceText],
+    [filename, true, true, "esnext", sourceText],
   ];
 });
 
 describe.each(cases)(
-  "%s (sourceMap: %s, reactDev: %s)",
-  (filename, sourceMap, reactDev, sourceText) => {
+  "%s (sourceMap: %s, reactDev: %s, target: %s)",
+  (filename, sourceMap, reactDev, target, sourceText) => {
     for (const fn of [oxc, swc, babel]) {
-      const options: RunOptions = { filename, sourceText, sourceMap, reactDev };
+      const options: RunOptions = { filename, sourceText, sourceMap, reactDev, target };
       const code = fn(options).code;
       // fs.writeFileSync(`./output/${filename}.${fn.name}.js`, code);
       assert(code);
