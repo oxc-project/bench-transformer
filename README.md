@@ -16,53 +16,54 @@ React development + refresh is 6x faster than swc and 20x - 70x faster than Babe
 ### GitHub Actions `ubuntu-latest`
 
 ```
-oxc - src/transform.bench.ts > UserSettings.tsx (sourceMap: false, reactDev: false)
-5.38x faster than swc
-57.51x faster than babel
-
-oxc - src/transform.bench.ts > UserSettings.tsx (sourceMap: true, reactDev: false)
-5.15x faster than swc
-47.33x faster than babel
-
-oxc - src/transform.bench.ts > UserSettings.tsx (sourceMap: false, reactDev: true)
-5.08x faster than swc
-54.38x faster than babel
-
-oxc - src/transform.bench.ts > UserSettings.tsx (sourceMap: true, reactDev: true)
-4.99x faster than swc
-48.33x faster than babel
-
-oxc - src/transform.bench.ts > parser.ts (sourceMap: false, reactDev: false)
-3.57x faster than swc
-39.97x faster than babel
-
-oxc - src/transform.bench.ts > parser.ts (sourceMap: true, reactDev: false)
-3.45x faster than swc
-31.61x faster than babel
-
-oxc - src/transform.bench.ts > renderer.ts (sourceMap: false, reactDev: false)
-3.64x faster than swc
-27.85x faster than babel
-
-oxc - src/transform.bench.ts > renderer.ts (sourceMap: true, reactDev: false)
-3.56x faster than swc
-19.13x faster than babel
-
-oxc - src/transform.bench.ts > table.tsx (sourceMap: false, reactDev: false)
-4.13x faster than swc
-34.22x faster than babel
-
-oxc - src/transform.bench.ts > table.tsx (sourceMap: true, reactDev: false)
-3.90x faster than swc
-26.15x faster than babel
-
-oxc - src/transform.bench.ts > table.tsx (sourceMap: false, reactDev: true)
-4.30x faster than swc
-44.17x faster than babel
-
-oxc - src/transform.bench.ts > table.tsx (sourceMap: true, reactDev: true)
-3.93x faster than swc
-32.84x faster than babel
+  oxc - src/transform.bench.ts > UserSettings.tsx (sourceMap: false, reactDev: false, target: esnext)
+    4.18x faster than swc
+    49.04x faster than babel
+  oxc - src/transform.bench.ts > UserSettings.tsx (sourceMap: false, reactDev: false, target: es2015)
+    5.71x faster than swc
+    46.49x faster than babel
+  oxc - src/transform.bench.ts > UserSettings.tsx (sourceMap: true, reactDev: false, target: esnext)
+    4.23x faster than swc
+    40.18x faster than babel
+  oxc - src/transform.bench.ts > UserSettings.tsx (sourceMap: false, reactDev: true, target: esnext)
+    5.41x faster than swc
+    64.39x faster than babel
+  oxc - src/transform.bench.ts > UserSettings.tsx (sourceMap: true, reactDev: true, target: esnext)
+    5.17x faster than swc
+    53.43x faster than babel
+  oxc - src/transform.bench.ts > parser.ts (sourceMap: false, reactDev: false, target: esnext)
+    3.13x faster than swc
+    34.59x faster than babel
+  oxc - src/transform.bench.ts > parser.ts (sourceMap: false, reactDev: false, target: es2015)
+    3.51x faster than swc
+    31.86x faster than babel
+  oxc - src/transform.bench.ts > parser.ts (sourceMap: true, reactDev: false, target: esnext)
+    3.03x faster than swc
+    26.98x faster than babel
+  oxc - src/transform.bench.ts > renderer.ts (sourceMap: false, reactDev: false, target: esnext)
+    3.21x faster than swc
+    23.76x faster than babel
+  oxc - src/transform.bench.ts > renderer.ts (sourceMap: false, reactDev: false, target: es2015)
+    3.62x faster than swc
+    22.93x faster than babel
+  oxc - src/transform.bench.ts > renderer.ts (sourceMap: true, reactDev: false, target: esnext)
+    3.11x faster than swc
+    18.77x faster than babel
+  oxc - src/transform.bench.ts > table.tsx (sourceMap: false, reactDev: false, target: esnext)
+    3.74x faster than swc
+    30.57x faster than babel
+  oxc - src/transform.bench.ts > table.tsx (sourceMap: false, reactDev: false, target: es2015)
+    4.32x faster than swc
+    30.96x faster than babel
+  oxc - src/transform.bench.ts > table.tsx (sourceMap: true, reactDev: false, target: esnext)
+    3.59x faster than swc
+    26.30x faster than babel
+  oxc - src/transform.bench.ts > table.tsx (sourceMap: false, reactDev: true, target: esnext)
+    4.71x faster than swc
+    46.03x faster than babel
+  oxc - src/transform.bench.ts > table.tsx (sourceMap: true, reactDev: true, target: esnext)
+    4.45x faster than swc
+    37.05x faster than babel
 ```
 
 ## Isolated Declarations DTS Emit
