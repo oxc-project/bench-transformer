@@ -14,5 +14,8 @@ swcTransform(sourceText, {
       }
     },
     preserveAllComments: false,
+    experimental: {
+      disableAllLints: true
+    }
   }
 });
