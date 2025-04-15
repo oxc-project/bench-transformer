@@ -2,7 +2,7 @@
   "name": "bench-transformer",
   "private": true,
   "type": "module",
-  "packageManager": "pnpm@10.7.1",
+  "packageManager": "pnpm@10.8.1",
   "scripts": {
     "bench": "vitest bench --run"
   },
@@ -14,7 +14,7 @@
     "@swc/core": "^1.10.14",
     "@types/babel__core": "^7.20.5",
     "@types/node": "^22.13.1",
-    "oxc-transform": "^0.62.0",
+    "oxc-transform": "^0.63.0",
     "prettier": "^3.4.2",
     "react-refresh": "^0.17.0",
     "typescript": "^5.7.3",
