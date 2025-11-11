@@ -116,10 +116,6 @@ For package download size, oxc downloads 2 packages for around a total of 2MB.
 
 ### NOTE:
 
-Babel's code generator deoptimised the styling for large files and reports:
-
-> [BABEL] Note: The code generator has deoptimised the styling of parser.ts as it exceeds the max of 500KB.
-
 I intended to benchmark `checker.ts` from tsc, but Babel failed to parse:
 
 ```

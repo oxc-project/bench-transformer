@@ -56,6 +56,7 @@ function babel(options: RunOptions) {
     configFile: false,
     browserslistConfigFile: false,
     comments: false,
+    compact: false,
     envName: "development",
     plugins: options.reactDev ? ["react-refresh/babel"] : [],
     presets: [
