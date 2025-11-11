@@ -1,9 +1,11 @@
 import fs from "node:fs";
 import assert from "node:assert";
 import { bench, describe } from "vitest";
-import { transformSync as swcTransform } from "@swc/core";
-import { transformSync as babelTransform } from "@babel/core";
-import { transform as oxcTransform } from "oxc-transform";
+import { transformSync as swcTransform, transform as swcTransformAsync, type Options as SwcTransformOptions } from "@swc/core";
+import { transformSync as babelTransform, transformAsync as babelTransformAsync, type TransformOptions as BabelTransformOptions } from "@babel/core";
+import { transform as oxcTransform, transformAsync as oxcTransformAsync, type TransformOptions as OxcTransformOptions } from "oxc-transform";
+
+const CONCURRENT_RUN_COUNT = 5;
 
 type RunOptions = {
   filename: string;
@@ -13,8 +15,8 @@ type RunOptions = {
   target: 'esnext' | 'es2015'
 };
 
-function oxc(options: RunOptions) {
-  return oxcTransform(options.filename, options.sourceText, {
+function getOxcOptions(options: RunOptions): OxcTransformOptions {
+  return {
     sourcemap: options.sourceMap,
     target: options.target,
     react: {
@@ -22,11 +24,19 @@ function oxc(options: RunOptions) {
       development: options.reactDev,
       refresh: options.reactDev ? {} : undefined,
     },
-  });
+  }
 }
 
-function swc(options: RunOptions) {
-  return swcTransform(options.sourceText, {
+function oxc(options: RunOptions) {
+  return oxcTransform(options.filename, options.sourceText, getOxcOptions(options));
+}
+
+async function oxcAsync(options: RunOptions) {
+  return await oxcTransformAsync(options.filename, options.sourceText, getOxcOptions(options));
+}
+
+function getSwcOptions(options: RunOptions): SwcTransformOptions {
+  return {
     filename: options.filename,
     sourceMaps: options.sourceMap,
     swcrc: false,
@@ -45,11 +55,19 @@ function swc(options: RunOptions) {
         disableAllLints: true
       }
     },
-  });
+  }
 }
 
-function babel(options: RunOptions) {
-  return babelTransform(options.sourceText, {
+function swc(options: RunOptions) {
+  return swcTransform(options.sourceText, getSwcOptions(options));
+}
+
+async function swcAsync(options: RunOptions) {
+  return await swcTransformAsync(options.sourceText, getSwcOptions(options));
+}
+
+function getBabelOptions(options: RunOptions): BabelTransformOptions {
+  return {
     filename: options.filename,
     sourceMaps: options.sourceMap,
     babelrc: false,
@@ -66,7 +84,15 @@ function babel(options: RunOptions) {
         { runtime: "automatic", development: options.reactDev },
       ],
     ],
-  })!;
+  }
+}
+
+function babel(options: RunOptions) {
+  return babelTransform(options.sourceText, getBabelOptions(options))!;
+}
+
+async function babelAsync(options: RunOptions) {
+  return (await babelTransformAsync(options.sourceText, getBabelOptions(options)))!;
 }
 
 type Case = [
@@ -93,13 +119,38 @@ const cases = fs.readdirSync("./fixtures").flatMap((filename): Case[] => {
 
 describe.each(cases)(
   "%s (sourceMap: %s, reactDev: %s, target: %s)",
-  (filename, sourceMap, reactDev, target, sourceText) => {
+  async (filename, sourceMap, reactDev, target, sourceText) => {
     for (const fn of [oxc, swc, babel]) {
       const options: RunOptions = { filename, sourceText, sourceMap, reactDev, target };
       const code = fn(options).code;
       // fs.writeFileSync(`./output/${filename}.${fn.name}.js`, code);
       assert(code);
-      bench(fn.name, () => void fn(options));
+      bench(fn.name, () => {
+        for (let i = 0; i < CONCURRENT_RUN_COUNT; i++) {
+          void fn(options)
+        }
+      });
+    }
+
+    if (!sourceMap && !reactDev && target === "es2015") {
+      for (const fn of [oxcAsync, swcAsync, babelAsync]) {
+        const options: RunOptions = { filename, sourceText, sourceMap, reactDev, target };
+        const code = (await fn(options)).code;
+        // fs.writeFileSync(`./output/${filename}.${fn.name}.js`, code);
+        assert(code);
+        bench(fn.name, async () => {
+          for (let i = 0; i < CONCURRENT_RUN_COUNT; i++) {
+            await fn(options);
+          }
+        });
+        bench(fn.name + ' (Promise.all)', async () => {
+          const arr = [];
+          for (let i = 0; i < CONCURRENT_RUN_COUNT; i++) {
+            arr.push(fn(options));
+          }
+          await Promise.all(arr);
+        });
+      }
     }
   },
 );
