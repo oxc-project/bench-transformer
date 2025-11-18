@@ -3,7 +3,7 @@ import assert from "node:assert";
 import { bench, describe } from "vitest";
 import { transformSync as swcTransform, transform as swcTransformAsync, type Options as SwcTransformOptions } from "@swc/core";
 import { transformSync as babelTransform, transformAsync as babelTransformAsync, type TransformOptions as BabelTransformOptions } from "@babel/core";
-import { transform as oxcTransform, transformAsync as oxcTransformAsync, type TransformOptions as OxcTransformOptions } from "oxc-transform";
+import { transformSync as oxcTransform, transform as oxcTransformAsync, type TransformOptions as OxcTransformOptions } from "oxc-transform";
 
 const CONCURRENT_RUN_COUNT = 5;
 
