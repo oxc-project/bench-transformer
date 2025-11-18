@@ -2,10 +2,10 @@ import fs from "node:fs";
 import assert from "node:assert";
 import { bench, describe } from "vitest";
 import { transpileDeclaration } from "typescript";
-import { isolatedDeclaration } from "oxc-transform";
+import { isolatedDeclarationSync } from "oxc-transform";
 
 function oxc(filename: string, sourceText: string) {
-  return isolatedDeclaration(filename, sourceText).code;
+  return isolatedDeclarationSync(filename, sourceText).code;
 }
 
 function tsc(fileName: string, sourceText: string) {
