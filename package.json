@@ -2,7 +2,7 @@
   "name": "bench-transformer",
   "private": true,
   "type": "module",
-  "packageManager": "pnpm@10.22.0",
+  "packageManager": "pnpm@10.23.0",
   "scripts": {
     "bench": "vitest bench --run"
   },
