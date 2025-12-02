@@ -1,9 +1,21 @@
 import fs from "node:fs";
 import assert from "node:assert";
 import { bench, describe } from "vitest";
-import { transformSync as swcTransform, transform as swcTransformAsync, type Options as SwcTransformOptions } from "@swc/core";
-import { transformSync as babelTransform, transformAsync as babelTransformAsync, type TransformOptions as BabelTransformOptions } from "@babel/core";
-import { transformSync as oxcTransform, transform as oxcTransformAsync, type TransformOptions as OxcTransformOptions } from "oxc-transform";
+import {
+  transformSync as swcTransform,
+  transform as swcTransformAsync,
+  type Options as SwcTransformOptions,
+} from "@swc/core";
+import {
+  transformSync as babelTransform,
+  transformAsync as babelTransformAsync,
+  type TransformOptions as BabelTransformOptions,
+} from "@babel/core";
+import {
+  transformSync as oxcTransform,
+  transform as oxcTransformAsync,
+  type TransformOptions as OxcTransformOptions,
+} from "oxc-transform";
 
 const CONCURRENT_RUN_COUNT = 5;
 
@@ -12,7 +24,7 @@ type RunOptions = {
   sourceText: string;
   sourceMap: boolean;
   reactDev: boolean;
-  target: 'esnext' | 'es2015'
+  target: "esnext" | "es2015";
 };
 
 function getOxcOptions(options: RunOptions): OxcTransformOptions {
@@ -24,7 +36,7 @@ function getOxcOptions(options: RunOptions): OxcTransformOptions {
       development: options.reactDev,
       refresh: options.reactDev ? {} : undefined,
     },
-  }
+  };
 }
 
 function oxc(options: RunOptions) {
@@ -52,10 +64,10 @@ function getSwcOptions(options: RunOptions): SwcTransformOptions {
       },
       preserveAllComments: false,
       experimental: {
-        disableAllLints: true
-      }
+        disableAllLints: true,
+      },
     },
-  }
+  };
 }
 
 function swc(options: RunOptions) {
@@ -79,12 +91,9 @@ function getBabelOptions(options: RunOptions): BabelTransformOptions {
     plugins: options.reactDev ? ["react-refresh/babel"] : [],
     presets: [
       "@babel/preset-typescript",
-      [
-        "@babel/preset-react",
-        { runtime: "automatic", development: options.reactDev },
-      ],
+      ["@babel/preset-react", { runtime: "automatic", development: options.reactDev }],
     ],
-  }
+  };
 }
 
 function babel(options: RunOptions) {
@@ -96,11 +105,11 @@ async function babelAsync(options: RunOptions) {
 }
 
 type Case = [
-  filename: RunOptions['filename'],
-  sourceMap: RunOptions['sourceMap'],
-  reactDev: RunOptions['reactDev'],
-  target: RunOptions['target'],
-  sourceText: RunOptions['sourceText'],
+  filename: RunOptions["filename"],
+  sourceMap: RunOptions["sourceMap"],
+  reactDev: RunOptions["reactDev"],
+  target: RunOptions["target"],
+  sourceText: RunOptions["sourceText"],
 ];
 const cases = fs.readdirSync("./fixtures").flatMap((filename): Case[] => {
   const sourceText = fs.readFileSync(`./fixtures/${filename}`, "utf8");
@@ -127,7 +136,7 @@ describe.each(cases)(
       assert(code);
       bench(fn.name, () => {
         for (let i = 0; i < CONCURRENT_RUN_COUNT; i++) {
-          void fn(options)
+          void fn(options);
         }
       });
     }
@@ -143,7 +152,7 @@ describe.each(cases)(
             await fn(options);
           }
         });
-        bench(fn.name + ' (Promise.all)', async () => {
+        bench(fn.name + " (Promise.all)", async () => {
           const arr = [];
           for (let i = 0; i < CONCURRENT_RUN_COUNT; i++) {
             arr.push(fn(options));

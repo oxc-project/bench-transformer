@@ -4,7 +4,8 @@
   "type": "module",
   "packageManager": "pnpm@10.24.0",
   "scripts": {
-    "bench": "vitest bench --run"
+    "bench": "vitest bench --run",
+    "fmt": "oxfmt"
   },
   "devDependencies": {
     "@babel/core": "^7.26.7",
@@ -15,7 +16,7 @@
     "@types/babel__core": "^7.20.5",
     "@types/node": "^24.0.0",
     "oxc-transform": "^0.101.0",
-    "prettier": "^3.4.2",
+    "oxfmt": "^0.16.0",
     "react-refresh": "^0.18.0",
     "typescript": "^5.7.3",
     "vitest": "^4.0.0"

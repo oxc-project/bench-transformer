@@ -10,12 +10,12 @@ swcTransform(sourceText, {
     transform: {
       treatConstEnumAsEnum: true,
       react: {
-        runtime: 'automatic'
-      }
+        runtime: "automatic",
+      },
     },
     preserveAllComments: false,
     experimental: {
-      disableAllLints: true
-    }
-  }
+      disableAllLints: true,
+    },
+  },
 });
