@@ -17,6 +17,6 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "useUnknownInCatchVariables": true
-  }
+    "useUnknownInCatchVariables": true,
+  },
 }

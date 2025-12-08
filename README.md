@@ -86,13 +86,12 @@ oxc - src/id.bench.ts > table.tsx
   7.99x faster than tsc
 ```
 
-
 ### Memory Usage
 
 On `parser.ts` by using `/usr/bin/time -alh node`:
 
 |       | Max RSS |
-| ---   | ------- |
+| ----- | ------- |
 | oxc   | 57 MB   |
 | swc   | 74 MB   |
 | babel | 180 MB  |
@@ -103,16 +102,16 @@ For package download size, oxc downloads 2 packages for around a total of 2MB.
 
 | Package                                                                                  | Size                                                                                       |
 | ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| `@oxc-transform/binding-darwin-arm64`                                                    | [1.95 MB](https://www.npmjs.com/package/@oxc-transform/binding-darwin-arm64)                |
-| `@swc/core-darwin-arm64`                                                                 | [37.5 MB](https://www.npmjs.com/package/@swc/core-darwin-arm64)                             |
+| `@oxc-transform/binding-darwin-arm64`                                                    | [1.95 MB](https://www.npmjs.com/package/@oxc-transform/binding-darwin-arm64)               |
+| `@swc/core-darwin-arm64`                                                                 | [37.5 MB](https://www.npmjs.com/package/@swc/core-darwin-arm64)                            |
 | `@babel/core` + `@babel/preset-env` + `@babel/preset-react` + `@babel/preset-typescript` | [21MB and 170 packages](https://www.npmjs.com/package/@oxc-transform/binding-darwin-arm64) |
 
 ## Fixtures
 
-* [TypeScript/src/compiler/parser.ts](https://github.com/microsoft/TypeScript/blob/3ad0f752482f5e846dc35a69572ccb43311826c0/src/compiler/parser.ts) - an atypical large file with 10777 lines.
-* [vuejs/core/packages/runtime-core/src/renderer.ts](https://github.com/vuejs/core/blob/cb34b28a4a9bf868be4785b001c526163eda342e/packages/runtime-core/src/renderer.ts) - somewhat large library file with 2550 lines.
-* [AFFiNE/packages/frontend/core/src/components/affine/page-properties/table.tsx](https://github.com/toeverything/AFFiNE/blob/a9b29d24f1f6e5563e43a11b5cbcfb30c9981d25/packages/frontend/core/src/components/affine/page-properties/table.tsx) - a tsx file with 1118 lines.
-* [cal.com/apps/web/components/getting-started/steps-views/UserSettings.tsx](https://github.com/calcom/cal.com/blob/20729b3a4e62c52f49419d2c3b30225f0c7a5936/apps/web/components/getting-started/steps-views/UserSettings.tsx) - a typical 124 lines of tsx code.
+- [TypeScript/src/compiler/parser.ts](https://github.com/microsoft/TypeScript/blob/3ad0f752482f5e846dc35a69572ccb43311826c0/src/compiler/parser.ts) - an atypical large file with 10777 lines.
+- [vuejs/core/packages/runtime-core/src/renderer.ts](https://github.com/vuejs/core/blob/cb34b28a4a9bf868be4785b001c526163eda342e/packages/runtime-core/src/renderer.ts) - somewhat large library file with 2550 lines.
+- [AFFiNE/packages/frontend/core/src/components/affine/page-properties/table.tsx](https://github.com/toeverything/AFFiNE/blob/a9b29d24f1f6e5563e43a11b5cbcfb30c9981d25/packages/frontend/core/src/components/affine/page-properties/table.tsx) - a tsx file with 1118 lines.
+- [cal.com/apps/web/components/getting-started/steps-views/UserSettings.tsx](https://github.com/calcom/cal.com/blob/20729b3a4e62c52f49419d2c3b30225f0c7a5936/apps/web/components/getting-started/steps-views/UserSettings.tsx) - a typical 124 lines of tsx code.
 
 ### NOTE:
 
