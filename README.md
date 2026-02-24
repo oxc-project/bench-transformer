@@ -102,9 +102,9 @@ For package download size, oxc downloads 2 packages for around a total of 2MB.
 
 | Package                                                                                  | Size                                                                                       |
 | ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| `@oxc-transform/binding-darwin-arm64`                                                    | [1.95 MB](https://www.npmjs.com/package/@oxc-transform/binding-darwin-arm64)               |
-| `@swc/core-darwin-arm64`                                                                 | [37.5 MB](https://www.npmjs.com/package/@swc/core-darwin-arm64)                            |
-| `@babel/core` + `@babel/preset-env` + `@babel/preset-react` + `@babel/preset-typescript` | [21MB and 170 packages](https://www.npmjs.com/package/@oxc-transform/binding-darwin-arm64) |
+| `@oxc-transform/binding-darwin-arm64`                                                    | [1.95 MB](https://npmx.dev/package/@oxc-transform/binding-darwin-arm64)               |
+| `@swc/core-darwin-arm64`                                                                 | [37.5 MB](https://npmx.dev/package/@swc/core-darwin-arm64)                            |
+| `@babel/core` + `@babel/preset-env` + `@babel/preset-react` + `@babel/preset-typescript` | [21MB and 170 packages](https://npmx.dev/package/@oxc-transform/binding-darwin-arm64) |
 
 ## Fixtures
 
