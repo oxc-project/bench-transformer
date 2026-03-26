@@ -17,7 +17,7 @@
     "oxc-transform": "^0.121.0",
     "oxfmt": "^0.42.0",
     "react-refresh": "^0.18.0",
-    "typescript": "^5.7.3",
+    "typescript": "^6.0.0",
     "vitest": "^4.0.0"
   },
   "packageManager": "pnpm@10.30.2"
