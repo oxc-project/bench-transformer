@@ -15,7 +15,7 @@
     "@types/babel__core": "^7.20.5",
     "@types/node": "^25.0.0",
     "oxc-transform": "^0.124.0",
-    "oxfmt": "^0.43.0",
+    "oxfmt": "^0.44.0",
     "react-refresh": "^0.18.0",
     "typescript": "^6.0.0",
     "vitest": "^4.0.0"
