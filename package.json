@@ -3,8 +3,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "bench": "vitest bench --run",
-    "fmt": "oxfmt"
+    "bench": "vp test bench --run",
+    "fmt": "vp fmt",
+    "prepare": "vp config"
   },
   "devDependencies": {
     "@babel/core": "^7.26.7",
@@ -15,10 +16,10 @@
     "@types/babel__core": "^7.20.5",
     "@types/node": "^25.0.0",
     "oxc-transform": "^0.133.0",
-    "oxfmt": "^0.52.0",
     "react-refresh": "^0.18.0",
     "typescript": "^6.0.0",
-    "vitest": "^4.0.0"
+    "vite-plus": "catalog:",
+    "vitest": "catalog:"
   },
   "packageManager": "pnpm@11.0.4"
 }

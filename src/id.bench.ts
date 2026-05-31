@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import assert from "node:assert";
-import { bench, describe } from "vitest";
+import { bench, describe } from "vite-plus/test";
 import { transpileDeclaration } from "typescript";
 import { isolatedDeclarationSync } from "oxc-transform";
 
