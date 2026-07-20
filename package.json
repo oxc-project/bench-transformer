@@ -17,7 +17,7 @@
     "@types/node": "^25.0.0",
     "oxc-transform": "^0.140.0",
     "react-refresh": "^0.18.0",
-    "typescript": "^6.0.0",
+    "typescript": "^7.0.0",
     "vite-plus": "catalog:",
     "vitest": "catalog:"
   },
