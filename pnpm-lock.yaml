@@ -39,15 +39,15 @@ importers:
       '@types/node':
         specifier: ^25.0.0
         version: 25.0.2
+      '@typescript/typescript6':
+        specifier: ^6.0.2
+        version: 6.0.2
       oxc-transform:
         specifier: ^0.140.0
         version: 0.140.0
       react-refresh:
         specifier: ^0.18.0
         version: 0.18.0
-      typescript:
-        specifier: ^6.0.0
-        version: 6.0.3
       vite-plus:
         specifier: 'catalog:'
         version: 0.1.24(@types/node@25.0.2)(esbuild@0.27.7)(typescript@6.0.3)(vite@7.3.1(@types/node@25.0.2)(lightningcss@1.32.0))
@@ -1469,6 +1469,10 @@ packages:
 
   '@types/node@25.0.2':
     resolution: {integrity: sha512-gWEkeiyYE4vqjON/+Obqcoeffmk0NF15WSBwSs7zwVA2bAbTaE0SJ7P0WNGoJn8uE7fiaV5a7dKYIJriEqOrmA==}
+
+  '@typescript/typescript6@6.0.2':
+    resolution: {integrity: sha512-mbCddXd+jm7hfx7w2YU64/Av4/NqqeG3GoRZgxPcgoTxYjhrcfJRw9ULch71SS4G+Q3bOXFhRvPqjguN0Hyp5w==}
+    hasBin: true
 
   '@voidzero-dev/vite-plus-core@0.1.24':
     resolution: {integrity: sha512-iXPGBABnQnrDMx89H6MOCGcTZp+QW+3rY4YMVKdE6ydchSvPk2O3MI2vgaRVfOtWJ2IjnxSnf1n2yjP67ZBRFQ==}
@@ -3144,6 +3148,10 @@ snapshots:
   '@types/node@25.0.2':
     dependencies:
       undici-types: 7.16.0
+
+  '@typescript/typescript6@6.0.2':
+    dependencies:
+      '@typescript/old': typescript@6.0.3
 
   '@voidzero-dev/vite-plus-core@0.1.24(@types/node@25.0.2)(esbuild@0.27.7)(typescript@6.0.3)':
     dependencies:
