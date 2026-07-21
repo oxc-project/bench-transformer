@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import assert from "node:assert";
 import { bench, describe } from "vite-plus/test";
-import { transpileDeclaration } from "typescript";
+import { transpileDeclaration } from "@typescript/typescript6";
 import { isolatedDeclarationSync } from "oxc-transform";
 
 function oxc(filename: string, sourceText: string) {
