@@ -16,7 +16,7 @@
     "@types/babel__core": "^7.20.5",
     "@types/node": "^25.0.0",
     "@typescript/typescript6": "^6.0.2",
-    "oxc-transform": "^0.140.0",
+    "oxc-transform": "^0.141.0",
     "react-refresh": "^0.18.0",
     "vite-plus": "catalog:"
   },
