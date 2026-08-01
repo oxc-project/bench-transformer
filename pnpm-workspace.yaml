@@ -3,7 +3,7 @@ allowBuilds:
   esbuild: true
 catalog:
   vite: npm:@voidzero-dev/vite-plus-core@0.2.6
-  vite-plus: 0.2.6
+  vite-plus: 0.2.7
 minimumReleaseAgeExclude:
   - "@oxc-transform/*"
   - oxc-transform
