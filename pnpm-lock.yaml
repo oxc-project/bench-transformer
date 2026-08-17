@@ -41,7 +41,13 @@ importers:
       '@typescript/typescript6':
         specifier: ^6.0.2
         version: 6.0.2
+      babel-plugin-react-compiler:
+        specifier: ^1.0.0
+        version: 1.0.0
       oxc-transform:
+        specifier: ^0.144.0
+        version: 0.144.0
+      oxc-transform-react:
         specifier: ^0.144.0
         version: 0.144.0
       react-refresh:
@@ -786,6 +792,128 @@ packages:
 
   '@oxc-project/types@0.143.0':
     resolution: {integrity: sha512-u6JZdLBTLotrNC9Vd6vPssINdzcCzleKAH6EJKImQb7GtYvX5keN2dxkoK44stCc4tffE6QQRtZTXVSzsLUlWA==}
+
+  '@oxc-transform-react/binding-android-arm-eabi@0.144.0':
+    resolution: {integrity: sha512-PpHbQKiNZgvUg0ccpffsHRZDEIoQOVUqy8XO6Ug14wj2Udzt5ugjw3AqSpgffqepN7oAPl7VzjSaiKG7k/YV8g==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    cpu: [arm]
+    os: [android]
+
+  '@oxc-transform-react/binding-android-arm64@0.144.0':
+    resolution: {integrity: sha512-X50TG9qTB0xgMVGn4UfAWtb5hLyC2xofh9k2u2gAvE6N3jW5zlootIlYIJ9SWnmwntj9SgZ3CbH9GrQczlc4tg==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    cpu: [arm64]
+    os: [android]
+
+  '@oxc-transform-react/binding-darwin-arm64@0.144.0':
+    resolution: {integrity: sha512-Lb4M7FtwjzVBuiz8gS9sf0paeafUWRZTHUCVlB0HfCVMl6eTZ5vP4/koAgyYY3Ocw/5ccTqqWnlC1vBSMUOMgw==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    cpu: [arm64]
+    os: [darwin]
+
+  '@oxc-transform-react/binding-darwin-x64@0.144.0':
+    resolution: {integrity: sha512-yTMBB0mUJDkyGZ5+10glqTXx1fTIsEbIxwGY9MihtC5m1RIxA8G7/tnoWwZbRmadZQUpDeRgk0sq6vE5nhSAmQ==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    cpu: [x64]
+    os: [darwin]
+
+  '@oxc-transform-react/binding-freebsd-x64@0.144.0':
+    resolution: {integrity: sha512-eljkRMUuTqpFfeZSh3RxJlWl95rl2ySn+9UySXllbKF36JmZ+NHkTBXdYzyH9nCP8cyguLAg1vclEDbUSrLIhg==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    cpu: [x64]
+    os: [freebsd]
+
+  '@oxc-transform-react/binding-linux-arm-gnueabihf@0.144.0':
+    resolution: {integrity: sha512-QiX/kQ0zUlI7cdMzq65JdpwxVTsol47iZaM+5scKPZZSe2d6mvlvhyUq42r1wvmGMNC3R5we5UfzB53Rc6qZqg==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    cpu: [arm]
+    os: [linux]
+
+  '@oxc-transform-react/binding-linux-arm-musleabihf@0.144.0':
+    resolution: {integrity: sha512-Q9WQLcCZciwcPYZFZUjSFj/QZBV3oCiP9716JrJcmHpwAhSOHECPkAtI93gmrzkfBda0fG3FBaoHMNNTWhXOlg==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    cpu: [arm]
+    os: [linux]
+
+  '@oxc-transform-react/binding-linux-arm64-gnu@0.144.0':
+    resolution: {integrity: sha512-SiKauC0K4mvNbiSaEbwPnZgrgYSUkbZUllpJuVTxxlECrl3YAGRGkO6V3NSPFvFJXZEYFuAoPJ9+iVjBzf62Sw==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    cpu: [arm64]
+    os: [linux]
+    libc: [glibc]
+
+  '@oxc-transform-react/binding-linux-arm64-musl@0.144.0':
+    resolution: {integrity: sha512-iwUOr+tEJ5OCqCSKmx58NAvVT7iX8lTV2SqZWqg0n41u5zIb3xtD+7PshDhpydTglrB7SkEZJRCI8cthNx9bKg==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    cpu: [arm64]
+    os: [linux]
+    libc: [musl]
+
+  '@oxc-transform-react/binding-linux-ppc64-gnu@0.144.0':
+    resolution: {integrity: sha512-ovuH1kJRUZrZiGrBpo4HRI8M/dw/qtzkyBRAzsgIAx3K0QRBjNlsvr+cQApipGZgQMmD7bk5a8rLh4b5mP8cHw==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    cpu: [ppc64]
+    os: [linux]
+    libc: [glibc]
+
+  '@oxc-transform-react/binding-linux-riscv64-gnu@0.144.0':
+    resolution: {integrity: sha512-EVTrc51rseSVTXBB/a+fs2Jlfi3Q5BoDHBPAohIANXsF4UPIrEF0MePp1dS41huXAREUsRVKpx62891xaEtY5w==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    cpu: [riscv64]
+    os: [linux]
+    libc: [glibc]
+
+  '@oxc-transform-react/binding-linux-riscv64-musl@0.144.0':
+    resolution: {integrity: sha512-CGDSWylxJOAfZ0bFl9mFnXSxVgVxhlK51iUFmz3pzRnCiz9XadrADL6+NkrCDO1/YBDZoHbnWefqD5NTedJFug==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    cpu: [riscv64]
+    os: [linux]
+    libc: [musl]
+
+  '@oxc-transform-react/binding-linux-s390x-gnu@0.144.0':
+    resolution: {integrity: sha512-DF+FZClbHj3R13NKT/qfgNRG6azpzO0h/uXXKn9zaE5lvwRzZauUbBE+ixif2qe8z96ztn4Yngea32UdkucgOw==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    cpu: [s390x]
+    os: [linux]
+    libc: [glibc]
+
+  '@oxc-transform-react/binding-linux-x64-gnu@0.144.0':
+    resolution: {integrity: sha512-35mYvRYJpIjw70tK5NagEkIeVAu6wkgBZg5AfrFYKxNmbUmLR6kbv7Awhh+9yVvf6t18TGVkJdkic2zB7dc7Qw==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    cpu: [x64]
+    os: [linux]
+    libc: [glibc]
+
+  '@oxc-transform-react/binding-linux-x64-musl@0.144.0':
+    resolution: {integrity: sha512-GDRz1OCFiNYv0C2FZBVXOWTpI3Qw/tCKIKzAVb4q0Ma0341YSNk5VJ1Ou6bIocgN9o9hjJdYK2A6zpt8dcDGvg==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    cpu: [x64]
+    os: [linux]
+    libc: [musl]
+
+  '@oxc-transform-react/binding-openharmony-arm64@0.144.0':
+    resolution: {integrity: sha512-d0YOi9u0GeUdmwYRhpn8mQZEaVbOR5JKbfHXmcgCSOzgRc6W1dy6cVnDnlr8ScEKNSnBdzjkKb7B6IO0eo0JtQ==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    cpu: [arm64]
+    os: [openharmony]
+
+  '@oxc-transform-react/binding-win32-arm64-msvc@0.144.0':
+    resolution: {integrity: sha512-gpLta9fcH7qpwFGYxEknzjIt4r4nZM5dzJmfMF46AIds1A6iaUAxqwopPzIBiUsE8ewaxCh0Tg3Gpuk4d1/Y3g==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    cpu: [arm64]
+    os: [win32]
+
+  '@oxc-transform-react/binding-win32-ia32-msvc@0.144.0':
+    resolution: {integrity: sha512-vhAo4JJAWYpW2OJ9Wk/Z+fe31fIZLWFXkAAzduz8WRW7PGjNddk2ohmMm49bOsVCOIjC4Yerx8PKbtH1RKDeMQ==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    cpu: [ia32]
+    os: [win32]
+
+  '@oxc-transform-react/binding-win32-x64-msvc@0.144.0':
+    resolution: {integrity: sha512-3RywrPVBMrJ3B76j2KN2r9hIS4r3ESM15MafvG0OMV0YGgVWXu1bWSRmAGjKB2DcTO2KD5gev759XTJTgsynIA==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    cpu: [x64]
+    os: [win32]
 
   '@oxc-transform/binding-android-arm-eabi@0.144.0':
     resolution: {integrity: sha512-Sskiy+uGMIjOFI9D1OZdYgT2NzVuvkOU5HDWAdp36BNuBbOoBFpNTVAT2D9PGfRQJEKJ/K/Wb2L0gA2VC23UUA==}
@@ -1765,6 +1893,9 @@ packages:
     peerDependencies:
       '@babel/core': ^7.4.0 || ^8.0.0
 
+  babel-plugin-react-compiler@1.0.0:
+    resolution: {integrity: sha512-Ixm8tFfoKKIPYdCCKYTsqv+Fd4IJ0DQqMyEimo+pxUOMUR9cVPlwTrFt9Avu+3cb6Zp3mAzl+t1MrG2fxxKsxw==}
+
   baseline-browser-mapping@2.10.32:
     resolution: {integrity: sha512-wbPvpyjJPC0zdfdKXxqEL3Ea+bOMD/87X4lftiJkkaBiuG6ALQy1SLmEd7BSmVCuwCQsBrCamgBoLyfFDD1EPg==}
     engines: {node: '>=6.0.0'}
@@ -1969,6 +2100,10 @@ packages:
 
   obug@2.1.1:
     resolution: {integrity: sha512-uTqF9MuPraAQ+IsnPf366RG4cP9RtUi7MLO1N3KEc+wb0a6yKpeL0lmk2IB1jY5KHPAlTc6T/JRdC/YqxHNwkQ==}
+
+  oxc-transform-react@0.144.0:
+    resolution: {integrity: sha512-98G1A7nteiSUshb3mN7kXqd+pBzelB6O+cbvmvdEXAhzfgVER6vDJs9GtGE/g+gaRQfs1bnAPk/mQCguAKAmvw==}
+    engines: {node: ^20.19.0 || >=22.12.0}
 
   oxc-transform@0.144.0:
     resolution: {integrity: sha512-a6mYoz3PPIlwbU4xtHAmWJHD0SvXh9ayAHI1D0+LJEKvln+koaD2M9AAAm5bAN5kkT2AWxN37IVhL1EAzXUyfw==}
@@ -2992,6 +3127,63 @@ snapshots:
 
   '@oxc-project/types@0.143.0': {}
 
+  '@oxc-transform-react/binding-android-arm-eabi@0.144.0':
+    optional: true
+
+  '@oxc-transform-react/binding-android-arm64@0.144.0':
+    optional: true
+
+  '@oxc-transform-react/binding-darwin-arm64@0.144.0':
+    optional: true
+
+  '@oxc-transform-react/binding-darwin-x64@0.144.0':
+    optional: true
+
+  '@oxc-transform-react/binding-freebsd-x64@0.144.0':
+    optional: true
+
+  '@oxc-transform-react/binding-linux-arm-gnueabihf@0.144.0':
+    optional: true
+
+  '@oxc-transform-react/binding-linux-arm-musleabihf@0.144.0':
+    optional: true
+
+  '@oxc-transform-react/binding-linux-arm64-gnu@0.144.0':
+    optional: true
+
+  '@oxc-transform-react/binding-linux-arm64-musl@0.144.0':
+    optional: true
+
+  '@oxc-transform-react/binding-linux-ppc64-gnu@0.144.0':
+    optional: true
+
+  '@oxc-transform-react/binding-linux-riscv64-gnu@0.144.0':
+    optional: true
+
+  '@oxc-transform-react/binding-linux-riscv64-musl@0.144.0':
+    optional: true
+
+  '@oxc-transform-react/binding-linux-s390x-gnu@0.144.0':
+    optional: true
+
+  '@oxc-transform-react/binding-linux-x64-gnu@0.144.0':
+    optional: true
+
+  '@oxc-transform-react/binding-linux-x64-musl@0.144.0':
+    optional: true
+
+  '@oxc-transform-react/binding-openharmony-arm64@0.144.0':
+    optional: true
+
+  '@oxc-transform-react/binding-win32-arm64-msvc@0.144.0':
+    optional: true
+
+  '@oxc-transform-react/binding-win32-ia32-msvc@0.144.0':
+    optional: true
+
+  '@oxc-transform-react/binding-win32-x64-msvc@0.144.0':
+    optional: true
+
   '@oxc-transform/binding-android-arm-eabi@0.144.0':
     optional: true
 
@@ -3581,6 +3773,10 @@ snapshots:
       '@babel/helper-define-polyfill-provider': 1.0.0(@babel/core@8.0.1)
       core-js-compat: 3.49.0
 
+  babel-plugin-react-compiler@1.0.0:
+    dependencies:
+      '@babel/types': 7.29.7
+
   baseline-browser-mapping@2.10.32: {}
 
   browserslist@4.28.2:
@@ -3737,6 +3933,28 @@ snapshots:
   node-releases@2.0.46: {}
 
   obug@2.1.1: {}
+
+  oxc-transform-react@0.144.0:
+    optionalDependencies:
+      '@oxc-transform-react/binding-android-arm-eabi': 0.144.0
+      '@oxc-transform-react/binding-android-arm64': 0.144.0
+      '@oxc-transform-react/binding-darwin-arm64': 0.144.0
+      '@oxc-transform-react/binding-darwin-x64': 0.144.0
+      '@oxc-transform-react/binding-freebsd-x64': 0.144.0
+      '@oxc-transform-react/binding-linux-arm-gnueabihf': 0.144.0
+      '@oxc-transform-react/binding-linux-arm-musleabihf': 0.144.0
+      '@oxc-transform-react/binding-linux-arm64-gnu': 0.144.0
+      '@oxc-transform-react/binding-linux-arm64-musl': 0.144.0
+      '@oxc-transform-react/binding-linux-ppc64-gnu': 0.144.0
+      '@oxc-transform-react/binding-linux-riscv64-gnu': 0.144.0
+      '@oxc-transform-react/binding-linux-riscv64-musl': 0.144.0
+      '@oxc-transform-react/binding-linux-s390x-gnu': 0.144.0
+      '@oxc-transform-react/binding-linux-x64-gnu': 0.144.0
+      '@oxc-transform-react/binding-linux-x64-musl': 0.144.0
+      '@oxc-transform-react/binding-openharmony-arm64': 0.144.0
+      '@oxc-transform-react/binding-win32-arm64-msvc': 0.144.0
+      '@oxc-transform-react/binding-win32-ia32-msvc': 0.144.0
+      '@oxc-transform-react/binding-win32-x64-msvc': 0.144.0
 
   oxc-transform@0.144.0:
     optionalDependencies:

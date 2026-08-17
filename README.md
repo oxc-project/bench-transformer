@@ -5,6 +5,7 @@
 - Transform: Oxc is 3x - 5x faster than SWC, uses 20% less memory, and has smaller package size (2 MB vs SWC's 37 MB).
 - Transform: Oxc is 20x - 50x faster than Babel, uses 70% less memory, and is 19 MB smaller, with only 2 npm packages to install vs Babel's 170.
 - React development + React Refresh: Oxc is 5x faster than SWC, 50x faster than Babel.
+- React Compiler: `oxc-transform-react` is 12x - 16x faster than `babel-plugin-react-compiler` on the real-world TSX fixtures.
 - TS isolated declarations `.d.ts` emit: Oxc is 40x faster than TSC on typical files, 20x faster on larger files.
 
 ## Transform / Transpile
@@ -64,6 +65,24 @@ React development + refresh is 6x faster than swc and 20x - 70x faster than Babe
   oxc - src/transform.bench.ts > table.tsx (sourceMap: true, reactDev: true, target: esnext)
     4.45x faster than swc
     37.05x faster than babel
+```
+
+## React Compiler
+
+`oxc-transform-react` is 12x - 16x faster than `babel-plugin-react-compiler` on the two TSX fixtures.
+
+This benchmark compares synchronous React Compiler transforms targeting React 19. It excludes source maps and JSX lowering: Babel runs only `babel-plugin-react-compiler` with TSX parsing enabled, while Oxc uses `jsx: "preserve"`. The Oxc binding still removes TypeScript syntax as part of its fixed post-compiler pipeline.
+
+Run it with `vp run bench react-compiler`.
+
+### Apple M3 Max
+
+```
+oxc-transform-react - src/react-compiler.bench.ts > UserSettings.tsx
+  15.54x faster than babel-plugin-react-compiler
+
+oxc-transform-react - src/react-compiler.bench.ts > table.tsx
+  11.74x faster than babel-plugin-react-compiler
 ```
 
 ## Isolated Declarations DTS Emit
