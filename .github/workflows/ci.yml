@@ -26,3 +26,4 @@ jobs:
           cache: true
       - run: vp run bench id
       - run: vp run bench transform
+      - run: vp run bench react-compiler
