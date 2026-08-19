@@ -78,11 +78,15 @@ Run it with `vp run bench react-compiler`.
 ### Apple M3 Max
 
 ```
-oxc-transform-react - src/react-compiler.bench.ts > UserSettings.tsx
-  15.54x faster than babel-plugin-react-compiler
+UserSettings.tsx (mean time per transform)
+  oxc-transform-react: 0.87 ms
+  babel-plugin-react-compiler: 13.39 ms
+  15.37x faster than babel-plugin-react-compiler
 
-oxc-transform-react - src/react-compiler.bench.ts > table.tsx
-  11.74x faster than babel-plugin-react-compiler
+table.tsx (mean time per transform)
+  oxc-transform-react: 8.02 ms
+  babel-plugin-react-compiler: 98.68 ms
+  12.31x faster than babel-plugin-react-compiler
 ```
 
 ## Isolated Declarations DTS Emit
