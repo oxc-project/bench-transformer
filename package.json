@@ -17,7 +17,7 @@
     "@types/node": "^25.0.0",
     "@typescript/typescript6": "^6.0.2",
     "babel-plugin-react-compiler": "^1.0.0",
-    "oxc-transform": "^0.147.0",
+    "oxc-transform": "^0.148.0",
     "oxc-transform-react": "^0.147.0",
     "react-refresh": "^0.18.0",
     "vite-plus": "catalog:"
