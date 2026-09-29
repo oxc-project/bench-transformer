@@ -11,7 +11,11 @@ import {
   transformAsync as babelTransformAsync,
   type TransformOptions as BabelTransformOptions,
 } from "@babel/core";
-import { transformSync as oxcTransform, transform as oxcTransformAsync } from "oxc-transform";
+import {
+  transformSync as oxcTransform,
+  transform as oxcTransformAsync,
+  type TransformOptions as OxcTransformOptions,
+} from "oxc-transform";
 import { transformSync as oxboxTransform, transform as oxboxTransformAsync } from "oxbox";
 
 const CONCURRENT_RUN_COUNT = 5;
@@ -24,12 +28,14 @@ type RunOptions = {
   target: "esnext" | "es2015";
 };
 
-function getOxcOptions(options: RunOptions) {
+function getOxcOptions(
+  options: RunOptions,
+): Pick<OxcTransformOptions, "sourcemap" | "target" | "jsx"> {
   return {
     sourcemap: options.sourceMap,
     target: options.target,
     jsx: {
-      runtime: "automatic" as const,
+      runtime: "automatic",
       development: options.reactDev,
       refresh: options.reactDev ? {} : undefined,
     },
