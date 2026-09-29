@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import assert from "node:assert";
-import { bench, describe } from "vite-plus/test";
+import { describe, test } from "vite-plus/test";
 import {
   transformSync as swcTransform,
   transform as swcTransformAsync,
@@ -19,6 +19,8 @@ import {
 import { transformSync as oxboxTransform, transform as oxboxTransformAsync } from "oxbox";
 
 const CONCURRENT_RUN_COUNT = 5;
+const syncTransforms = [oxc, oxbox, swc, babel];
+const asyncTransforms = [oxcAsync, oxboxAsync, swcAsync, babelAsync];
 
 type RunOptions = {
   filename: string;
@@ -139,38 +141,48 @@ const cases = fs.readdirSync("./fixtures").flatMap((filename): Case[] => {
 
 describe.each(cases)(
   "%s (sourceMap: %s, reactDev: %s, target: %s)",
-  async (filename, sourceMap, reactDev, target, sourceText) => {
-    for (const fn of [oxc, oxbox, swc, babel]) {
-      const options: RunOptions = { filename, sourceText, sourceMap, reactDev, target };
+  (filename, sourceMap, reactDev, target, sourceText) => {
+    const options: RunOptions = { filename, sourceText, sourceMap, reactDev, target };
+
+    for (const fn of syncTransforms) {
       const code = fn(options).code;
       // fs.writeFileSync(`./output/${filename}.${fn.name}.js`, code);
       assert(code);
-      bench(fn.name, () => {
-        for (let i = 0; i < CONCURRENT_RUN_COUNT; i++) {
-          void fn(options);
-        }
-      });
     }
 
-    if (!sourceMap && !reactDev && target === "es2015") {
-      for (const fn of [oxcAsync, oxboxAsync, swcAsync, babelAsync]) {
-        const options: RunOptions = { filename, sourceText, sourceMap, reactDev, target };
-        const code = (await fn(options)).code;
-        // fs.writeFileSync(`./output/${filename}.${fn.name}.js`, code);
-        assert(code);
-        bench(fn.name, async () => {
+    test("comparison", async ({ bench }) => {
+      const benchmarks = syncTransforms.map((fn) =>
+        bench(fn.name, () => {
           for (let i = 0; i < CONCURRENT_RUN_COUNT; i++) {
-            await fn(options);
+            void fn(options);
           }
-        });
-        bench(fn.name + " (Promise.all)", async () => {
-          const arr = [];
-          for (let i = 0; i < CONCURRENT_RUN_COUNT; i++) {
-            arr.push(fn(options));
-          }
-          await Promise.all(arr);
-        });
+        }),
+      );
+
+      if (!sourceMap && !reactDev && target === "es2015") {
+        for (const fn of asyncTransforms) {
+          const code = (await fn(options)).code;
+          // fs.writeFileSync(`./output/${filename}.${fn.name}.js`, code);
+          assert(code);
+
+          benchmarks.push(
+            bench(fn.name, async () => {
+              for (let i = 0; i < CONCURRENT_RUN_COUNT; i++) {
+                await fn(options);
+              }
+            }),
+            bench(`${fn.name} (Promise.all)`, async () => {
+              const arr = [];
+              for (let i = 0; i < CONCURRENT_RUN_COUNT; i++) {
+                arr.push(fn(options));
+              }
+              await Promise.all(arr);
+            }),
+          );
+        }
       }
-    }
+
+      await bench.compare(...benchmarks);
+    }, 180_000);
   },
 );
