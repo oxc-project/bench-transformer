@@ -31,7 +31,7 @@ function getOxcOptions(options: RunOptions): OxcTransformOptions {
   return {
     sourcemap: options.sourceMap,
     target: options.target,
-    react: {
+    jsx: {
       runtime: "automatic",
       development: options.reactDev,
       refresh: options.reactDev ? {} : undefined,
