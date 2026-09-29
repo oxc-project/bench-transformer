@@ -16,6 +16,7 @@ import {
   transform as oxcTransformAsync,
   type TransformOptions as OxcTransformOptions,
 } from "oxc-transform";
+import { transformSync as oxboxTransform, transform as oxboxTransformAsync } from "oxbox";
 
 const CONCURRENT_RUN_COUNT = 5;
 
@@ -27,11 +28,13 @@ type RunOptions = {
   target: "esnext" | "es2015";
 };
 
-function getOxcOptions(options: RunOptions): OxcTransformOptions {
+function getOxcOptions(
+  options: RunOptions,
+): Pick<OxcTransformOptions, "sourcemap" | "target" | "jsx"> {
   return {
     sourcemap: options.sourceMap,
     target: options.target,
-    react: {
+    jsx: {
       runtime: "automatic",
       development: options.reactDev,
       refresh: options.reactDev ? {} : undefined,
@@ -45,6 +48,14 @@ function oxc(options: RunOptions) {
 
 async function oxcAsync(options: RunOptions) {
   return await oxcTransformAsync(options.filename, options.sourceText, getOxcOptions(options));
+}
+
+function oxbox(options: RunOptions) {
+  return oxboxTransform(options.filename, options.sourceText, getOxcOptions(options));
+}
+
+async function oxboxAsync(options: RunOptions) {
+  return await oxboxTransformAsync(options.filename, options.sourceText, getOxcOptions(options));
 }
 
 function getSwcOptions(options: RunOptions): SwcTransformOptions {
@@ -129,7 +140,7 @@ const cases = fs.readdirSync("./fixtures").flatMap((filename): Case[] => {
 describe.each(cases)(
   "%s (sourceMap: %s, reactDev: %s, target: %s)",
   async (filename, sourceMap, reactDev, target, sourceText) => {
-    for (const fn of [oxc, swc, babel]) {
+    for (const fn of [oxc, oxbox, swc, babel]) {
       const options: RunOptions = { filename, sourceText, sourceMap, reactDev, target };
       const code = fn(options).code;
       // fs.writeFileSync(`./output/${filename}.${fn.name}.js`, code);
@@ -142,7 +153,7 @@ describe.each(cases)(
     }
 
     if (!sourceMap && !reactDev && target === "es2015") {
-      for (const fn of [oxcAsync, swcAsync, babelAsync]) {
+      for (const fn of [oxcAsync, oxboxAsync, swcAsync, babelAsync]) {
         const options: RunOptions = { filename, sourceText, sourceMap, reactDev, target };
         const code = (await fn(options)).code;
         // fs.writeFileSync(`./output/${filename}.${fn.name}.js`, code);

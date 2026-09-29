@@ -7,6 +7,7 @@ catalog:
 minimumReleaseAgeExclude:
   - "@oxc-transform/*"
   - oxc-transform
+  - oxbox@0.1.0
 overrides:
   vite: "catalog:"
 peerDependencyRules:
