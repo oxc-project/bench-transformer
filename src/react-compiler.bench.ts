@@ -6,7 +6,7 @@ import {
   transformSync as oxcTransform,
   type TransformOptions as OxcTransformOptions,
 } from "oxc-transform-react";
-import { bench, describe } from "vite-plus/test";
+import { describe, test } from "vite-plus/test";
 
 const CONCURRENT_RUN_COUNT = 5;
 const filenames = ["UserSettings.tsx", "table.tsx"];
@@ -46,11 +46,15 @@ describe.each(cases)("%s", (filename, sourceText) => {
   assert(oxcResult.code);
   assert(transforms[1][1]()?.code);
 
-  for (const [name, transform] of transforms) {
-    bench(name, () => {
-      for (let i = 0; i < CONCURRENT_RUN_COUNT; i++) {
-        void transform();
-      }
-    });
-  }
+  test("comparison", async ({ bench }) => {
+    await bench.compare(
+      ...transforms.map(([name, transform]) =>
+        bench(name, () => {
+          for (let i = 0; i < CONCURRENT_RUN_COUNT; i++) {
+            void transform();
+          }
+        }),
+      ),
+    );
+  });
 });

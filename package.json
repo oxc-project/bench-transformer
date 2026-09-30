@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "bench": "vp test bench --run",
+    "bench": "vp test bench --run --reporter verbose",
     "fmt": "vp fmt",
     "prepare": "vp config"
   },
