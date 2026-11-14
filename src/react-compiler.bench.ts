@@ -6,7 +6,7 @@ import {
   transformSync as oxcTransform,
   type TransformOptions as OxcTransformOptions,
 } from "oxc-transform-react";
-import { bench, describe } from "vite-plus/test";
+import { describe, test } from "vite-plus/test";
 
 const CONCURRENT_RUN_COUNT = 5;
 const filenames = ["UserSettings.tsx", "table.tsx"];
@@ -34,23 +34,26 @@ const cases = filenames.map((filename) => {
 });
 
 describe.each(cases)("%s", (filename, sourceText) => {
-  const babelOptions = getBabelOptions(filename);
+  test("react compiler", { timeout: 0 }, async ({ bench }) => {
+    const babelOptions = getBabelOptions(filename);
 
-  const transforms = [
-    ["oxc-transform-react", () => oxcTransform(filename, sourceText, oxcOptions)],
-    ["babel-plugin-react-compiler", () => babelTransform(sourceText, babelOptions)],
-  ] as const;
+    const transforms = [
+      ["oxc-transform-react", () => oxcTransform(filename, sourceText, oxcOptions)],
+      ["babel-plugin-react-compiler", () => babelTransform(sourceText, babelOptions)],
+    ] as const;
 
-  const oxcResult = transforms[0][1]();
-  assert(!oxcResult.fatal, oxcResult.errors.map((error) => error.message).join("\n"));
-  assert(oxcResult.code);
-  assert(transforms[1][1]()?.code);
+    const oxcResult = transforms[0][1]();
+    assert(!oxcResult.fatal, oxcResult.errors.map((error) => error.message).join("\n"));
+    assert(oxcResult.code);
+    assert(transforms[1][1]()?.code);
 
-  for (const [name, transform] of transforms) {
-    bench(name, () => {
-      for (let i = 0; i < CONCURRENT_RUN_COUNT; i++) {
-        void transform();
-      }
-    });
-  }
+    const benchmarks = transforms.map(([name, transform]) =>
+      bench(name, () => {
+        for (let i = 0; i < CONCURRENT_RUN_COUNT; i++) {
+          void transform();
+        }
+      }),
+    );
+    await bench.compare(...benchmarks);
+  });
 });

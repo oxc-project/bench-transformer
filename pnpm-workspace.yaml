@@ -2,14 +2,15 @@ allowBuilds:
   "@swc/core": true
   esbuild: true
 catalog:
-  vite: npm:@voidzero-dev/vite-plus-core@0.3.3
-  vite-plus: 0.3.3
+  vite: npm:@voidzero-dev/vite-plus-core@1.6.0
+  vite-plus: 1.6.0
 minimumReleaseAgeExclude:
   - "@oxc-transform/*"
   - oxc-transform
   - oxbox@0.1.0
 overrides:
-  vite: "catalog:"
+  vite@*: "catalog:"
+  vitest@*: 5.1.0
 peerDependencyRules:
   allowAny:
     - vite

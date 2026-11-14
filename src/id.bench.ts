@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import assert from "node:assert";
-import { bench, describe } from "vite-plus/test";
+import { describe, test } from "vite-plus/test";
 import { transpileDeclaration } from "@typescript/typescript6";
 import { isolatedDeclarationSync as oxboxIsolatedDeclarationSync } from "oxbox";
 import { isolatedDeclarationSync } from "oxc-transform";
@@ -26,10 +26,13 @@ const sources = fs.readdirSync("./fixtures").map((filename) => {
 });
 
 describe.each(sources)("%s", (filename, sourceText) => {
-  for (const fn of [oxc, oxbox, tsc]) {
-    const code = fn(filename, sourceText);
-    // fs.writeFileSync(`./output/${filename}.${fn.name}.js`, code);
-    assert(code);
-    bench(fn.name, () => void fn(filename, sourceText));
-  }
+  test("isolated declarations", { timeout: 0 }, async ({ bench }) => {
+    const benchmarks = [oxc, oxbox, tsc].map((fn) => {
+      const code = fn(filename, sourceText);
+      // fs.writeFileSync(`./output/${filename}.${fn.name}.js`, code);
+      assert(code);
+      return bench(fn.name, () => void fn(filename, sourceText));
+    });
+    await bench.compare(...benchmarks);
+  });
 });
